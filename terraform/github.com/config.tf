@@ -3,16 +3,6 @@ variable "GITHUB_TOKEN" {
   sensitive = true
 }
 
-variable "RELEASE_GITHUB_TOKEN" {
-  type      = string
-  sensitive = true
-}
-
-variable "CI_COSMOS_MNEMONIC" {
-  type      = string
-  sensitive = true
-}
-
 variable "CACHIX_AUTH_TOKEN" {
   type      = string
   sensitive = true
@@ -26,7 +16,7 @@ terraform {
   required_providers {
     github = {
       source  = "integrations/github"
-      version = "5.42.0"
+      version = ">= 5.23.0"
     }
   }
 }
@@ -37,26 +27,11 @@ provider "github" {
 }
 
 terraform {
-  backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "ComposableFi"
-
-    workspaces {
-      name = "composable"
-    }
+  backend "s3" {
+    bucket = "composablefi-env-terraform-github-com"
+    key = "default"
+    region = "eu-central-1"
   }
-}
-
-resource "github_actions_secret" "RELEASE_GITHUB_TOKEN" {
-  repository       = "composable"
-  secret_name      = "RELEASE_GITHUB_TOKEN"
-  plaintext_value  = var.RELEASE_GITHUB_TOKEN
-}
-
-resource "github_actions_secret" "CI_COSMOS_MNEMONIC" {
-  repository       = "composable"
-  secret_name      = "CI_COSMOS_MNEMONIC"  
-  plaintext_value  = var.CI_COSMOS_MNEMONIC
 }
 
 resource "github_actions_secret" "CACHIX_AUTH_TOKEN" {

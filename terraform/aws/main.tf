@@ -9,13 +9,10 @@ terraform {
 
 
 terraform {
-  backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "ComposableFi"
-
-    workspaces {
-      name = "composable"
-    }
+  backend "s3" {
+    bucket = "composablefi-env-terraform-aws"
+    key = "default"
+    region = "eu-central-1"
   }
 }
 
@@ -27,31 +24,12 @@ variable "bootstrap_img_path" {
   type        = string
 }
 
-output "public_ip" {
-  value = aws_instance.mantis_server.public_ip
+variable "CI_SSH_KEY" {
+  type        = string
+  sensitive = true
 }
 
-resource "aws_instance" "mantis_server" {
-  ami                    = aws_ami.mantis_ami.id
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
-  provisioner "remote-exec" {
-    connection {
-      host = self.public_ip
-      private_key = file("~/.ssh/id_ed25519")
-    }
-    inline = [ "echo 'SSH confirmed!'" ]
-  }
-
-  provisioner "local-exec" {
-    command = "ssh-keyscan ${self.public_ip} >> ~/.ssh/known_hosts"
-  }
-
-  lifecycle {
-    ignore_changes = all
-  }
-}
 
 resource "aws_security_group" "mantis_security_group" {
   ingress {
@@ -78,11 +56,8 @@ resource "aws_ami" "mantis_ami" {
   }
 }
 
-resource "aws_s3_bucket" "mantis_bucket" {}
-
-resource "aws_s3_bucket_acl" "mantis_acl" {
-  bucket = aws_s3_bucket.mantis_bucket.id
-  acl    = "private"
+resource "aws_s3_bucket" "mantis_bucket" {
+  
 }
 
 resource "aws_s3_object" "image_upload" {
@@ -162,23 +137,3 @@ resource "aws_iam_policy" "vmimport_policy" {
   })
 }
 
-variable "live_config_path" {
-  type        = string
-  description = "Path to the live NixOS config we want to deploy"
-}
-
-resource "null_resource" "nixos_deployment" {
-  triggers = {
-    live_config_path = var.live_config_path
-  }
-
-  provisioner "local-exec" {
-    command = <<-EOT
-      nix-copy-closure $TARGET ${var.live_config_path}
-      ssh $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
-      EOT
-    environment = {
-      TARGET = "root@${aws_instance.mantis_server.public_ip}"
-    }
-  }
-}
