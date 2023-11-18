@@ -2,11 +2,11 @@
 
 # How this was setup?
 
-Created AWS S3 storage buckets to store Terraform states.s
+Created AWS S3 storage buckets to store Terraform states.
 
 Added some SSH private key and some stash derived crypto accounts and limited AWS credentials to CI.
 
-These are used to setup infrastructure via Terraform.
+These are used to setup infrastructure via Terraform and give unique identities to running nodes.
 
 # How each node instance deployed?
 
@@ -15,7 +15,7 @@ NixOs with configuration for specific node is activated via SSH.
 
 Relevant crypto mnemonics are mounted from CI.
 
-SSH key of node "owner" is mounted to machine for debugging.
+SSH key of node "owner" is authorized to machine for debugging (and even out if CI immutable deploy from same nix file from local machine).
 
 **On PR Terraform plans infra deployment and NixOs version activation**
 
