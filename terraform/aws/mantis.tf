@@ -17,9 +17,9 @@ resource "null_resource" "nixos_deployment" {
   provisioner "local-exec" {
     command = <<-EOT
       ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
-      export NIX_SSHOPTS="-i ${local_sensitive_file.filename}"
+      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
       nix-copy-closure $TARGET ${var.live_config_path}          
-      ssh -i ${local_sensitive_file.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
+      ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
       TARGET = "root@${aws_instance.mantis_server.public_dns}"
