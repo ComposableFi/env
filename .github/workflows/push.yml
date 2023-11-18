@@ -4,6 +4,9 @@ on:
       - "main"
 jobs:
   publish:
+    permissions:
+      id-token: "write"
+      contents: "read"
     runs-on: "ubuntu-latest-m"
     concurrency:  
       cancel-in-progress: false
