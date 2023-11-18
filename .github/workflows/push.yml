@@ -20,7 +20,9 @@ jobs:
           name: composable
           skipAddingSubstituter: false
           skipPush: false
-      - run: nix run .#terraform --impure -- apply --auto-approve
+      - run: 
+          nix run .#terraform --impure -- init
+          nix run .#terraform --impure -- apply --auto-approve
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           visibility: "public"

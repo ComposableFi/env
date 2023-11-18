@@ -20,4 +20,6 @@ jobs:
           name: composable
           skipAddingSubstituter: false
           skipPush: false
-      - run: nix run .#terraform --impure -- plan
+      - run: 
+          nix run .#terraform --impure -- init
+          nix run .#terraform --impure -- plan
