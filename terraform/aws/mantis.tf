@@ -3,19 +3,23 @@ variable "live_config_path" {
   description = "Path to the live NixOS config we want to deploy"
 }
 
+resource "local_sensitive_file" "ssh_key" {
+  content  = base64decode(ar.CI_SSH_KEY)
+  filename = "${path.module}/${aws_instance.mantis_server.public_dns}"
+}
+
 resource "null_resource" "nixos_deployment" {
   triggers = {
     live_config_path = var.live_config_path
     public_dns = aws_instance.mantis_server.public_dns
-    CI_SSH_KEY = var.CI_SSH_KEY
   }
 
   provisioner "local-exec" {
     command = <<-EOT
       ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
-      nix-copy-closure $TARGET ${var.live_config_path}
-      echo "${base64decode(var.CI_SSH_KEY)}" > ~/.ssh/${aws_instance.mantis_server.public_dns}
-      ssh -i ~/.ssh/${aws_instance.mantis_server.public_dns} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
+      export NIX_SSHOPTS="-i ${local_sensitive_file.filename}"
+      nix-copy-closure $TARGET ${var.live_config_path}          
+      ssh -i ${local_sensitive_file.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
       TARGET = "root@${aws_instance.mantis_server.public_dns}"
