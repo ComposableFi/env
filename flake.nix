@@ -4,44 +4,136 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     composable.url = "github:ComposableFi/composable";
+    cvm.url = "github:ComposableFi/cvm";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs @ { flake-parts, cvm, composable, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         # To import a flake module
         # 1. Add foo to inputs
         # 2. Add foo as a parameter to the outputs function
         # 3. Add here: foo.flakeModule
       ];
-      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: rec {
-        # Per-system attributes can be defined here. The self' and inputs'
-        # module parameters provide easy access to attributes of the same
-        # system.
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      perSystem =
+        { config
+        , self'
+        , inputs'
+        , pkgs
+        , system
+        , ...
+        }:
+        let
 
-        # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
-        formatter = pkgs.alejandra;
-        packages.default = pkgs.hello;
+          bootstrap-config-module = {
+            system.stateVersion = "23.05";
+            services.openssh.enable = true;
+            users.users.root.openssh.authorizedKeys.keys = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/PGg+j/Y5gP/e7zyMCyK+f0YfImZgKZ3IUUWmkoGtT dz@pop-os" # dzmitry-lahoda
+              "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNY+BfeToEN1+1HTSggNrFHYhYFl9H9dPgIJy558OgWHsYrhMA7PHUy3VK0DjnIT9jFU1PF3/v1tpgUij9bOm6Md6N7Dn2/XL6/FqPNJ9i408V6DdCmH65aJ2tnSJJ4aicD9P39MHVG6tYPKJX9BrHiGzLPLi+c/4CWXIcj/u4aAuvspfCu6a5jWPj03XBwUUbkmdgyvEJ7wJoiOKE1b/Ilxiithau7w0GgHG3e1RUMeVy4aaNET3sTlhiJf4k+cL+7MIM13wUiqjglyzBfMGQKPsaHFuMMsfK4lHploLkBZeopiIxyRzQeRODFsuUSR+J/oL7TiIyMALCEqErRb8OrmPI7NKYRqokfU20YTgOSW+t7JxCx5vtYHyw2HVMZTnSeHAFfcclBh1Vi4vqHymNhJXEh35k/iLdUNdcMgHyqmjZZecpAT3fIULOlGfyfc6kKFmfAYWFcci+ByE0e0T82BlLWJHBuQTByu2w+IzUA81uKBqBqNgLayi49Bpwg5k= dz@pop-os
+" # dzmitry-lahoda
+            ];
+          };
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            packages.default
-            awscli2
-            nixos-rebuild
-            google-cloud-sdk
-            opentofu
-            terranix
-          ];
+          live-config-module = {
+            networking.firewall.allowedTCPPorts = [ 80 ];
+            environment.systemPackages = [ cvm.packages.${system}.mantis ];
+            systemd.services.iplz = {
+              enable = true;
+              wantedBy = [ "multi-user.target" ];
+              after = [ "network.target" ];
+              script = ''                  
+                    RUST_TRACE=trace mantis --centauri "https://rpc.composable.nodestake.top:443" --osmosis "todo" --neutron "todo" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "green inch denial draw output great truth source dad summer betray price used claim lab garment scout twice increase buyer banana sniff forum salad" --order-contract "centauri1lnyecncq9akyk8nk0qlppgrq6yxktr68483ahryn457x9ap4ty2sthjcyt"
+                  '';
+              serviceConfig = {
+                Restart = "always";
+                Type = "simple";
+              };
+            };
+          };
+
+
+          mantis-vm = inputs.nixos-generators.nixosGenerate {
+            inherit pkgs;
+            format = "vm";
+            modules = [
+              bootstrap-config-module
+              {
+                services.getty.autologinUser = "root";
+                virtualisation.forwardPorts = [{ from = "host"; host.port = 8000; guest.port = 80; }];
+              }
+              live-config-module
+            ];
+          };
+
+
+          bootstrap-img-name = "nixos-bootstrap-${system}";
+          bootstrap-img = inputs.nixos-generators.nixosGenerate {
+            inherit pkgs;
+            format = "amazon";
+            modules = [
+              bootstrap-config-module
+              { amazonImage.name = bootstrap-img-name; }
+            ];
+          };
+
+
+          live-config = (inputs.nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [
+              bootstrap-config-module
+              live-config-module
+              "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
+            ];
+          }).config.system.build.toplevel;
+          bootstrap-img-path = "${bootstrap-img}/${bootstrap-img-name}.vhd";
+
+          deploy-shell = pkgs.mkShell {
+            packages = [ pkgs.terraform ];
+            TF_VAR_bootstrap_img_path = bootstrap-img-path;
+            TF_VAR_live_config_path = "${live-config}";
+          };
+
+          terraform = pkgs.writeShellScriptBin "terraform" ''
+            export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
+            export TF_VAR_live_config_path="${live-config}"
+            export TF_VAR_AWS_REGION="eu-central-1"
+            ${pkgs.opentofu}/bin/terraform $@
+          '';
+
+        in
+        rec {
+          formatter = pkgs.alejandra;
+          packages =
+            {
+              inherit
+                mantis-vm
+                bootstrap-img
+                terraform;
+            };
+
+          devShells.default = pkgs.mkShell {
+            TF_VAR_bootstrap_img_path = bootstrap-img-path;
+            TF_VAR_live_config_path = "${live-config}";
+            buildInputs = with pkgs; [
+              awscli2
+              nixos-rebuild
+              google-cloud-sdk
+              opentofu
+              terranix
+              opentofu
+              terraform-ls
+              composable.packages.${system}.centaurid
+            ];
+          };
+
         };
-      };
       flake = {
         # The usual flake attributes can be defined here, including system-
         # agnostic ones like nixosModule and system-enumerating ones, although
