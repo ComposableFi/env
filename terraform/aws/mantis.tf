@@ -4,7 +4,7 @@ variable "live_config_path" {
 }
 
 resource "local_sensitive_file" "ssh_key" {
-  content  = base64decode(ar.CI_SSH_KEY)
+  content  = base64decode(var.CI_SSH_KEY)
   filename = "${path.module}/${aws_instance.mantis_server.public_dns}"
 }
 
