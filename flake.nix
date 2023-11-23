@@ -48,7 +48,12 @@
             wantedBy = ["multi-user.target"];
             after = ["network.target"];
             script = ''
-              RUST_TRACE=trace mantis --centauri "https://rpc.composable.nodestake.top:443" --osmosis "todo" --neutron "todo" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "green inch denial draw output great truth source dad summer betray price used claim lab garment scout twice increase buyer banana sniff forum salad" --order-contract "centauri1lnyecncq9akyk8nk0qlppgrq6yxktr68483ahryn457x9ap4ty2sthjcyt"
+              if [ -f .env ]; then
+                source .env
+              else
+                echo "No .env file found"
+              fi
+              RUST_BACKTRACE=1 RUST_TRACE=trace mantis --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --osmosis "todo" --neutron "todo" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri1nmrz67mprlngt2tx4qnm0seufsvtjc6v5qzx7jlf7dwlwrxpyc9sp0wxw3" --simulate "200000ppica,3ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0"
             '';
             serviceConfig = {
               Restart = "always";
