@@ -163,17 +163,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1691404134,
+        "lastModified": 1696008049,
         "narHash": "sha256-EUuqcY+ONGygESASMmmZ/H09FH+kQHTnizrgb1Rt0LA=",
-        "owner": "dzmitry-lahoda-forks",
+        "owner": "strangelove-ventures",
         "repo": "bech32cli",
-        "rev": "7e5bd85b131834fbde8e079bbab4d1cbc98de4e9",
+        "rev": "90054971ace4222e10db250f184b7f8bab2d9ca6",
         "type": "github"
       },
       "original": {
-        "owner": "dzmitry-lahoda-forks",
+        "owner": "strangelove-ventures",
         "repo": "bech32cli",
-        "rev": "7e5bd85b131834fbde8e079bbab4d1cbc98de4e9",
         "type": "github"
       }
     },
@@ -382,11 +381,11 @@
         "zombienet": "zombienet"
       },
       "locked": {
-        "lastModified": 1700224085,
-        "narHash": "sha256-uBPrI6VJQLjykykpFL21eGv5FXSOYiqoki3gaCmR+Ds=",
+        "lastModified": 1700762292,
+        "narHash": "sha256-JtX91/RWui0J1dXoCFnfNLLn0JYEN8pPqOfDcKJ/owY=",
         "owner": "ComposableFi",
         "repo": "composable",
-        "rev": "b6517977f68bdc9fd7e7983a4c79076c5e7afb69",
+        "rev": "183325950bf3b2ffbb05024aeb2800cedbb97a6f",
         "type": "github"
       },
       "original": {
@@ -952,11 +951,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1700167420,
-        "narHash": "sha256-K0DBDycPq0/DqVs2vk3OnaP/ksYD68Jn6AexvTlu694=",
+        "lastModified": 1700656155,
+        "narHash": "sha256-lfuQSOvme1zM298+rAI/NQs4HIYA6aoaN3TPLBFlCGI=",
         "owner": "ComposableFi",
         "repo": "cvm",
-        "rev": "3e312b3dcbb371c600bd6be806eabba98d964fb7",
+        "rev": "c078c9615b678eec9d281b14910bcb436e2f9617",
         "type": "github"
       },
       "original": {
@@ -975,11 +974,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1700182008,
-        "narHash": "sha256-NSjJGh/WC2ua9v1C46YjhED09JnURvHM1bWF4CVdHsE=",
+        "lastModified": 1700746029,
+        "narHash": "sha256-TMvcEiODHcIPWqRMyFuvVNrwuZy0FAD7ydlpZeN9CfI=",
         "owner": "ComposableFi",
         "repo": "cvm",
-        "rev": "21cf2ccbaee759de5495c0bdeb6d2251b98902f9",
+        "rev": "bd656ec1a947cdce1d17e683bc228701e9b1cbc0",
         "type": "github"
       },
       "original": {

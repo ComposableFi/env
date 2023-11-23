@@ -108,7 +108,9 @@
         };
 
         terraform = pkgs.writeShellScriptBin "terraform" ''
-          source .env
+          if [ -f .env ]; then
+            source .env
+          fi
           export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
           export TF_VAR_live_config_path="${live-config}"
           export TF_VAR_AWS_REGION="eu-central-1"
