@@ -49,7 +49,7 @@
             after = ["network.target"];
             script = ''
               if [ -f .env ]; then
-                source .env
+                source ~/.env
               else
                 echo "No .env file found"
               fi
