@@ -13,7 +13,7 @@ resource "local_sensitive_file" "ssh_key" {
 }
 
 resource "local_sensitive_file" "env" {
-  content  = "export MANTIS_COSMOS_MNEMONIC=\"${var.MANTIS_COSMOS_MNEMONIC}\""
+  content  = "export MANTIS_COSMOS_MNEMONIC='${var.MANTIS_COSMOS_MNEMONIC}'"
   filename = "${path.module}/env"
 }
 
