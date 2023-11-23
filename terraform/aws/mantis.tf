@@ -24,7 +24,6 @@ resource "null_resource" "nixos_deployment" {
     live_config_path = var.live_config_path
     public_dns = aws_instance.mantis_server.public_dns
     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC
-    self = provisioner.local-exec.command
   }
 
   provisioner "local-exec" {
