@@ -14,7 +14,7 @@ resource "local_sensitive_file" "ssh_key" {
 
 resource "local_sensitive_file" "MANTIS_COSMOS_MNEMONIC" {
   content  = base64decode(var.CI_SSH_KEY)
-  filename = "${path.module}/${aws_instance.mantis_server.public_dns}"
+  filename = "${path.module}/MANTIS_COSMOS_MNEMONIC"
 }
 
 
@@ -31,7 +31,7 @@ resource "null_resource" "nixos_deployment" {
       ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
       nix-copy-closure $TARGET ${var.live_config_path}          
-      ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET ''
+      scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.MANTIS_COSMOS_MNEMONIC} $TARGET:~/MANTIS_COSMOS_MNEMONIC 
       ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
