@@ -27,13 +27,14 @@ jobs:
           export TF_VAR_GITHUB_TOKEN=${{ secrets.TF_VAR_GITHUB_TOKEN }}
           export TF_VAR_AWS_ACCESS_KEY_ID=${{ secrets.TF_VAR_AWS_ACCESS_KEY_ID }}
           export TF_VAR_AWS_SECRET_ACCESS_KEY=${{ secrets.TF_VAR_AWS_SECRET_ACCESS_KEY }}
-          export TV_VAR_MANTIS_COSMOS_MNEMONIC=${{ secrets.TV_VAR_MANTIS_COSMOS_MNEMONIC }}
+          export TF_VAR_MANTIS_COSMOS_MNEMONIC=${{ secrets.TF_VAR_MANTIS_COSMOS_MNEMONIC }}
           export TF_VAR_CI_SSH_KEY=${{ secrets.TF_VAR_CI_SSH_KEY }}      
           export GITHUB_TOKEN=${{ secrets.TF_VAR_GITHUB_TOKEN }}
           export AWS_ACCESS_KEY_ID=${{ secrets.TF_VAR_AWS_ACCESS_KEY_ID }}
           export AWS_SECRET_ACCESS_KEY=${{ secrets.TF_VAR_AWS_SECRET_ACCESS_KEY }}
-          export MANTIS_COSMOS_MNEMONIC=${{ secrets.TV_VAR_MANTIS_COSMOS_MNEMONIC }}
-          export CI_SSH_KEY=${{ secrets.TF_VAR_CI_SSH_KEY }}      
+          export MANTIS_COSMOS_MNEMONIC=${{ secrets.TF_VAR_MANTIS_COSMOS_MNEMONIC }}
+          export CI_SSH_KEY=${{ secrets.TF_VAR_CI_SSH_KEY }}   
+            
           nix run .#terraform --impure -- init
           nix run .#terraform --impure -- apply --auto-approve
       - uses: "DeterminateSystems/flakehub-push@main"
