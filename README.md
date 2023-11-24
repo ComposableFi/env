@@ -29,3 +29,14 @@ All machines are built locally and run via QEMU. Linux only.
 Kudos to this person https://jonascarpay.com/posts/2022-09-19-declarative-deployment.html and my several attempt doing nix+tf all the ways possible.
 
 Here is summary of my attempts https://discourse.nixos.org/t/unknown-values-propagation-in-nix-like-in-hcl/26743
+
+# Security
+
+Sure I should also setup security advisory to GitHub hooks and other scanners, to check TF and NIX must not leak secrets, I just did not. 
+
+Nothing ~~big money~~ serious is in run for now :)
+
+Anyway bots on cold wallet should tip only needed for operation for hot. 
+
+Use stash rotating accounts for real CryptoOps, etc.
+
