@@ -42,7 +42,7 @@
 
         live-config-module = {
           networking.firewall.enable = true;
-          networking.firewall.allowedTCPPorts = [80 443 22290];
+          networking.firewall.allowedTCPPorts = [80 22];
           environment.systemPackages = [cvm.packages.${system}.mantis];
           systemd.services.mantis = {
             enable = true;

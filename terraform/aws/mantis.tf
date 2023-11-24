@@ -9,12 +9,12 @@ variable "MANTIS_COSMOS_MNEMONIC" {
 
 resource "local_sensitive_file" "ssh_key" {
   content  = base64decode(var.CI_SSH_KEY)
-  filename = "${path.module}/${aws_instance.mantis_server.public_dns}"
+  filename = "${path.module}/.terraform/${aws_instance.mantis_server.public_dns}"
 }
 
 resource "local_sensitive_file" "env" {
   content  = "export MANTIS_COSMOS_MNEMONIC='${var.MANTIS_COSMOS_MNEMONIC}'"
-  filename = "${path.module}/env"
+  filename = "${path.module}/.terraform/.env"
 }
 
 
@@ -28,7 +28,7 @@ resource "null_resource" "nixos_deployment" {
   provisioner "local-exec" {
     command = <<-EOT
       ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
-      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
+      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"      
       nix-copy-closure $TARGET ${var.live_config_path}          
       scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env.filename} $TARGET:/tmp/.env 
       ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
