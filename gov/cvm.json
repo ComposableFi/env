@@ -3,6 +3,12 @@
     "force": [
       {
         "force_network": {
+          "network_id": 5,
+          "metadata": "Cosmos Hub"          
+        }
+      },
+      {
+        "force_network": {
           "network_id": 4,
           "metadata": "Cosmos Neutron"          
         }
@@ -169,6 +175,18 @@
           }
         }
       },
+      {
+        "force_asset": {
+          "asset_id": "",
+          "network_id": 5,
+          "metadata": "ATOM on Cosmos Hub",
+          "local": {
+            "native": {
+              "denom": "uatom"
+            }
+          }
+        }
+      }, 
       {
         "force_asset": {
           "asset_id": "",
