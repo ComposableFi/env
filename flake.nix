@@ -55,7 +55,7 @@
           else
             echo "No .env file found"
           fi
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
         '';
 
         live-config-module = script: {
@@ -120,12 +120,28 @@
           .system
           .build
           .toplevel;
+
+        live-config-1 =
+          (inputs.nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [
+              bootstrap-config-module
+              (live-config-module mantis-node-pica-ntrn)
+              "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
+            ];
+          })
+          .config
+          .system
+          .build
+          .toplevel;
+
         bootstrap-img-path = "${bootstrap-img}/${bootstrap-img-name}.vhd";
 
         deploy-shell = pkgs.mkShell {
           packages = [pkgs.terraform];
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
           TF_VAR_live_config_path = "${live-config}";
+          TF_VAR_live_config_path_1 = "${live-config-1}";
         };
 
         terraform = pkgs.writeShellScriptBin "terraform" ''
@@ -134,6 +150,7 @@
           fi
           export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
           export TF_VAR_live_config_path="${live-config}"
+          export TF_VAR_live_config_path_1="${live-config-1}"
           export TF_VAR_AWS_REGION="eu-central-1"
           cd terraform/aws
           ${inputs.nixpkgs-stable.legacyPackages.${system}.terraform}/bin/terraform $@
