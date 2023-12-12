@@ -110,7 +110,7 @@
             inherit system;
             modules = [
               bootstrap-config-module
-              live-config-module
+              (live-config-module mantis-node-pica-osmo)
               "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
             ];
           })
