@@ -49,7 +49,6 @@
           RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
         '';
 
-
         mantis-node-pica-ntrn = ''
           if [ -f /root/.env ]; then
             source /root/.env
@@ -59,7 +58,7 @@
           RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
         '';
 
-        live-config-module = script : {
+        live-config-module = script: {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
           environment.systemPackages = [cvm.packages.${system}.mantis];
@@ -68,10 +67,13 @@
             wantedBy = ["multi-user.target"];
             after = ["network.target"];
             inherit script;
+            unitConfig = {
+              StartLimitIntervalSec = 0;
+              StartLimitBurst = 2147483647;
+            };
             serviceConfig = {
               Restart = "always";
               Type = "simple";
-              StartLimitIntervalSec = 0;
             };
           };
         };
