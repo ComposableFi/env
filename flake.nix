@@ -40,7 +40,26 @@
           ];
         };
 
-        live-config-module = {
+        mantis-node-pica-osmo = ''
+          if [ -f /tmp/.env ]; then
+            source /tmp/.env
+          else
+            echo "No .env file found"
+          fi
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
+        '';
+
+
+        mantis-node-pica-ntrn = ''
+          if [ -f /tmp/.env ]; then
+            source /tmp/.env
+          else
+            echo "No .env file found"
+          fi
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
+        '';
+
+        live-config-module = script : {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
           environment.systemPackages = [cvm.packages.${system}.mantis];
@@ -48,17 +67,11 @@
             enable = true;
             wantedBy = ["multi-user.target"];
             after = ["network.target"];
-            script = ''
-              if [ -f /tmp/.env ]; then
-                source /tmp/.env
-              else
-                echo "No .env file found"
-              fi
-              RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --osmosis "todo" --neutron "todo" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri1nmrz67mprlngt2tx4qnm0seufsvtjc6v5qzx7jlf7dwlwrxpyc9sp0wxw3" --simulate "200000ppica,3ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
-            '';
+            inherit script;
             serviceConfig = {
               Restart = "always";
               Type = "simple";
+              StartLimitIntervalSec = 0;
             };
           };
         };
@@ -78,7 +91,7 @@
                 }
               ];
             }
-            live-config-module
+            (live-config-module mantis-node-pica-osmo)
           ];
         };
 
@@ -97,7 +110,7 @@
             inherit system;
             modules = [
               bootstrap-config-module
-              live-config-module
+              (live-config-module mantis-node-pica-osmo)
               "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
             ];
           })
@@ -131,6 +144,7 @@
             bootstrap-img
             terraform
             ;
+          mantis-node-1 = pkgs.writeShellScriptBin "mantis-node-1" mantis-node-pica-osmo;
         };
 
         devShells.default = pkgs.mkShell {

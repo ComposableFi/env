@@ -22,8 +22,8 @@
           },
           "gateway": {
             "cosm_wasm": {
-              "contract": "osmo1ltevzdpc6ku5en4spjn887nnd7qt4mz0msn6jpk3s40rn80uz9yqa68crl",
-              "interpreter_code_id": 273,
+              "contract": "osmo1sy7pdmawyerekcl6xwz4v2p87j726auntcu48fvhsy24rkhv7n4s9yg267",
+              "interpreter_code_id": 321,
               "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh"
             }
           },
@@ -45,13 +45,14 @@
       {
         "force_network": {
           "network_id": 2,
+          "metadata": "Composable Cosmos",
           "accounts": {
             "bech": "centauri"
           },
           "gateway": {
             "cosm_wasm": {
-              "contract": "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d",
-              "interpreter_code_id": 16,
+              "contract": "centauri1lkh7p89tdhkc52vkza5jus5xmgjqjut6ngucsn88mhmzaqc02h5qu89k2u",
+              "interpreter_code_id": 32,
               "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k"
             }
           },
@@ -299,7 +300,7 @@
       {
         "force_exchange": {
           "exchange": {
-            "osmosis_cross_chain_swap": {
+            "osmosis_pool_manager_module_v1_beta1": {
               "pool_id": 1057,
               "token_a": "uosmo",
               "token_b": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244"
@@ -312,7 +313,7 @@
       {
         "force_exchange": {
           "exchange": {
-            "osmosis_cross_chain_swap": {
+            "osmosis_pool_manager_module_v1_beta1": {
               "pool_id": 1069,
               "token_a": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244",
               "token_b": "uosmo"
