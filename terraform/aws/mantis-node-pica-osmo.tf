@@ -1,7 +1,4 @@
-variable "live_config_path" {
-  type        = string
-  description = "Path to the live NixOS config we want to deploy"
-}
+
 variable "MANTIS_COSMOS_MNEMONIC" {
   type = string
   sensitive = true
@@ -31,7 +28,7 @@ resource "null_resource" "nixos_deployment" {
       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
             
       nix-copy-closure $TARGET ${var.live_config_path}          
-      scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env.filename} $TARGET:/tmp/.env
+      scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env.filename} $TARGET:/root/.env
       ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {

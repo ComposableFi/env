@@ -41,8 +41,8 @@
         };
 
         mantis-node-pica-osmo = ''
-          if [ -f /tmp/.env ]; then
-            source /tmp/.env
+          if [ -f /root/.env ]; then
+            source /root/.env
           else
             echo "No .env file found"
           fi
@@ -51,8 +51,8 @@
 
 
         mantis-node-pica-ntrn = ''
-          if [ -f /tmp/.env ]; then
-            source /tmp/.env
+          if [ -f /root/.env ]; then
+            source /root/.env
           else
             echo "No .env file found"
           fi
