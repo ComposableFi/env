@@ -2,6 +2,8 @@ on:
   pull_request:
     branches:
       - "main"
+  schedule:
+    - cron: "0 0 * * *"
 jobs:
   publish:
     runs-on: "ubuntu-latest-m"

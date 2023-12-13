@@ -172,7 +172,6 @@
           buildInputs = with pkgs; [
             awscli2
             nixos-rebuild
-            google-cloud-sdk
             inputs.nixpkgs-stable.legacyPackages.${system}.terraform
             terranix
             terraform-ls
