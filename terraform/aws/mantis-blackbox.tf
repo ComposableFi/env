@@ -7,17 +7,11 @@ resource "local_sensitive_file" "ssh_key" {
   filename = "${path.module}/.terraform/${aws_instance.mantis_server.public_dns}"
 }
 
-resource "local_sensitive_file" "env_0" {
-  content  = "export MANTIS_COSMOS_MNEMONIC='${var.MANTIS_COSMOS_MNEMONIC_0}'"
-  filename = "${path.module}/.terraform/0.env"
-}
-
 
 resource "null_resource" "nixos_deployment" {
   triggers = {
-    live_config_path = var.live_config_path
-    public_dns = aws_instance.mantis_server.public_dns
-    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
+    image = var.MANTIS_BLACKBOX_CONFIG_PATH
+    host = aws_instance.mantis_server.public_dns
   }
 
   provisioner "local-exec" {
