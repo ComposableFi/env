@@ -1,4 +1,4 @@
-variable "live_config_path" {
+variable "live_config_path_0" {
   type        = string
   description = "Path to the live NixOS config we want to deploy"
 }
@@ -21,7 +21,7 @@ resource "local_sensitive_file" "env_0" {
 
 resource "null_resource" "nixos_deployment" {
   triggers = {
-    live_config_path = var.live_config_path
+    live_config_path_0 = var.live_config_path_0
     public_dns = aws_instance.mantis_server.public_dns
     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
   }
@@ -31,9 +31,9 @@ resource "null_resource" "nixos_deployment" {
       ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
             
-      nix-copy-closure $TARGET ${var.live_config_path}          
+      nix-copy-closure $TARGET ${var.live_config_path_0}          
       scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env_0.filename} $TARGET:/root/.env
-      ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path}/bin/switch-to-configuration switch && nix-collect-garbage'
+      ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path_0}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
       TARGET = "root@${aws_instance.mantis_server.public_dns}"
