@@ -32,7 +32,7 @@
         bootstrap-config-module = {
           system.stateVersion = "23.05";
           services.openssh.enable = true;
-          environment.systemPackages = [ pkgs.chkservice];
+          environment.systemPackages = [pkgs.chkservice];
           users.users.root.openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/PGg+j/Y5gP/e7zyMCyK+f0YfImZgKZ3IUUWmkoGtT dz@pop-os" # dzmitry-lahoda
             "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNY+BfeToEN1+1HTSggNrFHYhYFl9H9dPgIJy558OgWHsYrhMA7PHUy3VK0DjnIT9jFU1PF3/v1tpgUij9bOm6Md6N7Dn2/XL6/FqPNJ9i408V6DdCmH65aJ2tnSJJ4aicD9P39MHVG6tYPKJX9BrHiGzLPLi+c/4CWXIcj/u4aAuvspfCu6a5jWPj03XBwUUbkmdgyvEJ7wJoiOKE1b/Ilxiithau7w0GgHG3e1RUMeVy4aaNET3sTlhiJf4k+cL+7MIM13wUiqjglyzBfMGQKPsaHFuMMsfK4lHploLkBZeopiIxyRzQeRODFsuUSR+J/oL7TiIyMALCEqErRb8OrmPI7NKYRqokfU20YTgOSW+t7JxCx5vtYHyw2HVMZTnSeHAFfcclBh1Vi4vqHymNhJXEh35k/iLdUNdcMgHyqmjZZecpAT3fIULOlGfyfc6kKFmfAYWFcci+ByE0e0T82BlLWJHBuQTByu2w+IzUA81uKBqBqNgLayi49Bpwg5k= dz@pop-os
@@ -59,10 +59,14 @@
           RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
         '';
 
+        mantis-blackbox-script = ''
+          RUST_BACKTRACE=1 RUST_TRACE=trace blackbox  | tee /var/log/blackbox.log
+        '';
+
         mkLiveConfigModule = script: {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
-          environment.systemPackages = [cvm.packages.${system}.mantis];
+          environment.systemPackages = [cvm.packages.${system}.mantis cvm.packages.${system}.mantis-blackbox];
           systemd.services.mantis = {
             enable = true;
             wantedBy = ["multi-user.target"];
@@ -78,6 +82,40 @@
             };
           };
         };
+
+        nixos-config-mantis-blackbox =
+          (inputs.nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [
+              bootstrap-config-module
+
+              {
+                networking.firewall.enable = true;
+                networking.firewall.allowedTCPPorts = [80 22 443 22290];
+                environment.systemPackages = [cvm.packages.${system}.mantis-blackbox];
+                systemd.services.mantis = {
+                  enable = true;
+                  wantedBy = ["multi-user.target"];
+                  after = ["network.target"];
+                  script = mantis-blackbox-script;
+                  unitConfig = {
+                    StartLimitIntervalSec = 0;
+                    StartLimitBurst = 2147483647;
+                  };
+                  serviceConfig = {
+                    Restart = "always";
+                    Type = "simple";
+                  };
+                };
+              }
+
+              "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
+            ];
+          })
+          .config
+          .system
+          .build
+          .toplevel;
 
         mantis-vm = inputs.nixos-generators.nixosGenerate {
           inherit pkgs;
@@ -152,6 +190,7 @@
           export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
           export TF_VAR_live_config_path_0="${nixos-config-mantis-solver-pica-osmo}"
           export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
+          export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
           export TF_VAR_AWS_REGION="eu-central-1"
           cd terraform/aws
           ${inputs.nixpkgs-stable.legacyPackages.${system}.terraform}/bin/terraform $@
