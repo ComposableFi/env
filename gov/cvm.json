@@ -20,7 +20,7 @@
           "accounts": {
             "bech": "osmo"
           },
-          "gateway": {
+          "outpost": {
             "cosm_wasm": {
               "contract": "osmo1sy7pdmawyerekcl6xwz4v2p87j726auntcu48fvhsy24rkhv7n4s9yg267",
               "interpreter_code_id": 321,
@@ -49,10 +49,10 @@
           "accounts": {
             "bech": "centauri"
           },
-          "gateway": {
+          "outpost": {
             "cosm_wasm": {
-              "contract": "centauri1lkh7p89tdhkc52vkza5jus5xmgjqjut6ngucsn88mhmzaqc02h5qu89k2u",
-              "interpreter_code_id": 32,
+              "contract": "centauri1xt9eujt2sv89srjkt5n2lxtys8skumrjh0z6ldu9sr9uslndqlxqtpnj0e",
+              "interpreter_code_id": 39,
               "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k"
             }
           },
@@ -73,9 +73,9 @@
       },
       {
         "force_network_to_network": {
-          "from": 2,
-          "to": 3,
-          "other": {
+          "from_network_id": 2,
+          "to_network_id": 3,
+          "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
@@ -88,9 +88,9 @@
       },
       {
         "force_network_to_network": {
-          "from": 3,
-          "to": 2,
-          "other": {
+          "from_network_id": 3,
+          "to_network_id": 2,
+          "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
