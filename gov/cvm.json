@@ -51,8 +51,8 @@
           },
           "outpost": {
             "cosm_wasm": {
-              "contract": "centauri1xt9eujt2sv89srjkt5n2lxtys8skumrjh0z6ldu9sr9uslndqlxqtpnj0e",
-              "interpreter_code_id": 39,
+              "contract": "centauri1vlh6knyx870k2mc9fspx08ka4fuddsxx6s8tjp83n7xkyckkgm8q25mwr6",
+              "interpreter_code_id": 40,
               "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k"
             }
           },
@@ -142,43 +142,31 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "12327321321233",
           "network_id": 4,
           "metadata": "Atom from Cosmos Hub",
           "local": {
             "native": {
               "denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9"
             }
-          },
-          "bridged": {
-            "location_on_network": {
-              "ibc_ics20": {
-              }
-            }
           }
         }
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "123213261321233",
           "network_id": 4,
           "metadata": "USDC from Axelar",
           "local": {
             "native": {
               "denom": "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
             }
-          },
-          "bridged": {
-            "location_on_network": {
-              "ibc_ics20": {
-              }
-            }
           }
         }
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "12321321832111",
           "network_id": 5,
           "metadata": "ATOM on Cosmos Hub",
           "local": {
@@ -190,18 +178,12 @@
       }, 
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "12321321321233",
           "network_id": 4,
           "metadata": "WETH from Axelar",
           "local": {
             "native": {
               "denom": "ibc/A585C2D15DCD3B010849B453A2CFCB5E213208A5AB665691792684C26274304D"
-            }
-          },
-          "bridged": {
-            "location_on_network": {
-              "ibc_ics20": {
-              }
             }
           }
         }
