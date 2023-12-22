@@ -244,7 +244,27 @@
             }
           }          
         }
-      },      
+      },
+      {
+        "force_asset": {
+          "asset_id": "",
+          "network_id": 4,
+          "metadata": "Centauri Picasso PICA on on Neutron",
+          "local": {
+            "native": {
+              "denom": "ibc/1CF1239A3068964DAF55F7300D7BE016E4E184F58EEB59096B138F6D72628BAA"
+            }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "ppica",
+                "trace_path": "transfer/channel-17"
+              }
+            }
+          }          
+        }
+      },            
       {
         "force_asset": {
           "asset_id": "",
