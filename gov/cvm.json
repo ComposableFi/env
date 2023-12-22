@@ -4,13 +4,39 @@
       {
         "force_network": {
           "network_id": 5,
-          "metadata": "Cosmos Hub"          
+          "metadata": "Cosmos Hub",          
+          "accounts":{
+            "bech": "cosmos"
+          }
         }
       },
       {
         "force_network": {
           "network_id": 4,
-          "metadata": "Cosmos Neutron"          
+          "metadata": "Cosmos Neutron",
+          "accounts":{
+            "bech":"neutron"
+          },
+          "outpost": {
+            "cosm_wasm" : {
+              "contract": "neutron1sugqzfsn4fu7apcah58ez24jrf7ewm6x2c0sz0jwvpkduk4ds88slan52w",
+              "interpreter_code_id": 581,
+              "admin": "neutron1u2sr0p2j75fuezu92nfxg5wm46gu22ywfacpyz"
+            }
+          },
+          "ibc": {
+            "channels": {
+              "ics20": {
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
+                "features": {
+                  "pfm": {},
+                  "wasm_hooks": {
+                    "callback": true
+                  }
+                }
+              }
+            }
+          }                    
         }
       },
       {

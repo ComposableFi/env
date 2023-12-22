@@ -989,6 +989,7 @@
         "crane": "crane_4",
         "datamodel-code-generator-src": "datamodel-code-generator-src",
         "devour-flake": "devour-flake_3",
+        "fastapi-cache-src": "fastapi-cache-src",
         "flake-parts": "flake-parts_8",
         "networks": "networks",
         "nixpkgs": "nixpkgs_15",
@@ -996,11 +997,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1703155089,
-        "narHash": "sha256-VMLwOkPgOPwYzGAOMmDRRZbllairq3nXXagSFBFzVpM=",
+        "lastModified": 1703247241,
+        "narHash": "sha256-EHZufdECloPircoVv4HUEl1tPQIU9SaE4D5UmbN6cCU=",
         "owner": "ComposableFi",
         "repo": "cvm",
-        "rev": "8086b0d6f0db4b6c1f43e50105fa9fc823f44ace",
+        "rev": "4d26918654b9ef7631738da91fe3023355fac179",
         "type": "github"
       },
       "original": {
@@ -1248,6 +1249,22 @@
         "owner": "evmos",
         "ref": "v16.0.0-rc4",
         "repo": "evmos",
+        "type": "github"
+      }
+    },
+    "fastapi-cache-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701956277,
+        "narHash": "sha256-zkWDeODlkEOd9s+vnedS1cliycZadpZNS1RvFfhw8/A=",
+        "owner": "long2ice",
+        "repo": "fastapi-cache",
+        "rev": "91ba6d75524b1f6a17ae6a3300ab51b9aa1fcf71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "long2ice",
+        "repo": "fastapi-cache",
         "type": "github"
       }
     },
@@ -3542,11 +3559,11 @@
         "nixpkgs": "nixpkgs_14"
       },
       "locked": {
-        "lastModified": 1703094359,
-        "narHash": "sha256-RQwus0tTLo58bOz5gDaxPEbhA2oX+6TqXH7dns1bgRE=",
+        "lastModified": 1703173993,
+        "narHash": "sha256-knmvZLtlEPT0RSdpjPUuzYUL3RDiYhZpKNxNxj6r9Dk=",
         "owner": "ComposableFi",
         "repo": "networks",
-        "rev": "a4edc3eee0c30592824a690f4db1f12ecaddc5e6",
+        "rev": "2be517f4f57375ba46f77b7adc2ef7a1c6673e46",
         "type": "github"
       },
       "original": {
