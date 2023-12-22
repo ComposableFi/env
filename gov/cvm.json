@@ -147,6 +147,118 @@
         }
       },
       {
+        "force_network_to_network": {
+          "metadata": "From Centauri to Neutron",
+          "from_network_id": 2,
+          "to_network_id": 4,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },
+      {
+        "force_network_to_network": {
+          "metadata": "From Neutron to Centauri",
+          "from_network_id": 4,
+          "to_network_id": 2,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      }, 
+      {
+        "force_network_to_network": {
+          "metadata": "From Neutron to Osmosis",
+          "from_network_id": 4,
+          "to_network_id": 3,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },
+      {
+        "force_network_to_network": {
+          "metadata": "From Osmosis to Neutron",
+          "from_network_id": 3,
+          "to_network_id": 4,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },
+      {
+        "force_network_to_network": {
+          "metadata": "From CosmosHub to Neutron",
+          "from_network_id": 5,
+          "to_network_id": 4,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },
+      {
+        "force_network_to_network": {
+          "metadata": "From CosmosHub to Centauri",
+          "from_network_id": 5,
+          "to_network_id": 2,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },
+      {
+        "force_network_to_network": {
+          "metadata": "From CosmosHub to Osmosis",
+          "from_network_id": 5,
+          "to_network_id": 3,
+          "to_network": {
+            "counterparty_timeout": {
+              "seconds": 600
+            },
+            "ics_20": {
+              "source": "",
+              "sink": ""
+            }
+          }
+        }
+      },                         
+      {
         "force_asset": {
           "asset_id": "237684487542793012780631851009",
           "network_id": 3,
