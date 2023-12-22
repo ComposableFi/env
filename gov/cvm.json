@@ -29,7 +29,6 @@
           }
         }
       },
-
       {
         "force_network": {
           "network_id": 4,
@@ -188,7 +187,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "12327321321233",
+          "asset_id": "",
           "network_id": 4,
           "metadata": "Atom from Cosmos Hub",
           "local": {
@@ -200,7 +199,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "123213261321233",
+          "asset_id": "",
           "network_id": 4,
           "metadata": "USDC from Axelar",
           "local": {
@@ -212,7 +211,47 @@
       },
       {
         "force_asset": {
-          "asset_id": "12321321832111",
+          "asset_id": "",
+          "network_id": 5,
+          "metadata": "Osmosis OSMO on Cosmos Hub",
+          "local": {
+            "native": {
+              "denom": "ibc/14F9BC3E44B8A9C1BE1FB08980FAB87034C9905EF17CF2F5008FC085218811CC"
+            }
+          },
+          "bridged":{
+            "location_on_network":{
+              "ibc_ics20":{
+                "base_denom":"uosmo",
+                "trace_path": "transfer/channel-141"
+              }
+            }
+          }
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "",
+          "network_id": 5,
+          "metadata": "Neutron NTRN on Cosmos Hub",
+          "local": {
+            "native": {
+              "denom": "ibc/0025F8A87464A471E66B234C4F93AEC5B4DA3D42D7986451A059273426290DD5"
+            }
+          },
+          "bridged":{
+            "location_on_network":{
+              "ibc_ics20":{
+                "base_denom":"untrn",
+                "trace_path": "transfer/channel-569"
+              }
+            }
+          }
+        }
+      },      
+      {
+        "force_asset": {
+          "asset_id": "",
           "network_id": 5,
           "metadata": "ATOM on Cosmos Hub",
           "local": {
@@ -221,10 +260,10 @@
             }
           }
         }
-      }, 
+      },        
       {
         "force_asset": {
-          "asset_id": "12321321321233",
+          "asset_id": "",
           "network_id": 4,
           "metadata": "WETH from Axelar",
           "local": {
