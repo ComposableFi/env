@@ -7,9 +7,29 @@
           "metadata": "Cosmos Hub",          
           "accounts":{
             "bech": "cosmos"
+          },
+          "ibc" :{
+            "channels": {
+              "ics20": {
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
+                "features" : {
+                  "pfm" : {}
+                }
+              }
+            }
           }
         }
       },
+      {
+        "force_network" : {
+          "network_id": 6,
+          "metadata": "Cosmos Stride",
+          "accounts":{
+            "bech":"stride"
+          }
+        }
+      },
+
       {
         "force_network": {
           "network_id": 4,
@@ -48,8 +68,8 @@
           },
           "outpost": {
             "cosm_wasm": {
-              "contract": "osmo1sy7pdmawyerekcl6xwz4v2p87j726auntcu48fvhsy24rkhv7n4s9yg267",
-              "interpreter_code_id": 321,
+              "contract": "osmo1z3tknhs993sp769xsg57w3au47z4rl3mzqg2vmlzqxft8f7auwjq63dw56",
+              "interpreter_code_id": 376,
               "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh"
             }
           },
