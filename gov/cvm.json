@@ -249,7 +249,7 @@
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851011",
-          "metadata": "Centauri Picasso Composable Polkadot DOT on Osmosis",
+          "metadata": "Osmosis Centauri Picasso Composable Polkadot DOT",
           "network_id": 3,
           "local": {
             "native": {
@@ -266,6 +266,26 @@
           }
         }
       },
+      {
+        "force_asset": {
+          "asset_id": "",
+          "metadata": "Centauri Neutron NTRN",
+          "network_id": 3,
+          "local": {
+            "native": {
+              "denom": "ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1"
+            }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "untrn",
+                "trace_path": "transfer/channel-18"
+              }
+            }
+          }
+        }
+      },      
       {
         "force_asset": {
           "asset_id": "",
@@ -330,7 +350,7 @@
         "force_asset": {
           "asset_id": "",
           "network_id": 4,
-          "metadata": "Centauri Picasso PICA on on Neutron",
+          "metadata": "Neutron Centauri Picasso PICA",
           "local": {
             "native": {
               "denom": "ibc/1CF1239A3068964DAF55F7300D7BE016E4E184F58EEB59096B138F6D72628BAA"
@@ -390,7 +410,7 @@
         "force_asset": {
           "asset_id": "",
           "network_id": 5,
-          "metadata": "Centauri Picasso Pica on Cosmos Hub",
+          "metadata": "CosmosHub Centauri Picasso Pica",
           "local": {
             "native": {
               "denom": "ibc/F4A4D751F3C3E0545E44EBE27B2FE53AEC1603595ABE06CDF2FF86903D590A63"
@@ -442,7 +462,7 @@
         "force_asset": {
           "asset_id": "158456325028528675187087900673",
           "network_id": 2,
-          "metadata": "Picasso PICA on Layer",
+          "metadata": "Centauri Picasso PICA",
           "local": {
             "native": {
               "denom": "ppica"
@@ -462,7 +482,7 @@
         "force_asset": {
           "asset_id": "158456325028528675187087900674",
           "network_id": 2,
-          "metadata": "Osmosis OSMO on Layer",
+          "metadata": "Centauri Osmosis OSMO",
           "local": {
             "native": {
               "denom": "ibc/47BD209179859CDE4A2806763D7189B6E6FE13A17880FE2B42DE1E6C1E329E23"
@@ -501,7 +521,7 @@
         "force_asset": {
           "asset_id": "158456325028528675187087900676",
           "network_id": 2,
-          "metadata": "Cosmos Hub ATOM on Layer",
+          "metadata": "Centauri Cosmos Hub ATOM",
           "local": {
             "native": {
               "denom": "ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0"
