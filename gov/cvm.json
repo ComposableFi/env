@@ -192,7 +192,15 @@
           "metadata": "Atom from Cosmos Hub",
           "local": {
             "native": {
-              "denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9"
+              "denom": "uatom"
+            }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "uatom",
+                "trace_path": "transfer/channel-1"
+              }
             }
           }
         }
@@ -206,9 +214,37 @@
             "native": {
               "denom": "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
             }
-          }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "uusdc",
+                "trace_path": "transfer/channel-2"
+              }
+            }
+          }          
         }
       },
+      {
+        "force_asset": {
+          "asset_id": "",
+          "network_id": 4,
+          "metadata": "Osmosis OSMO on Neutron",
+          "local": {
+            "native": {
+              "denom": "ibc/376222D6D9DAE23092E29740E56B758580935A6D77C24C2ABD57A6A78A1F3955"
+            }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "uosmo",
+                "trace_path": "transfer/channel-10"
+              }
+            }
+          }          
+        }
+      },      
       {
         "force_asset": {
           "asset_id": "",
@@ -248,7 +284,27 @@
             }
           }
         }
-      },      
+      },    
+      {
+        "force_asset": {
+          "asset_id": "",
+          "network_id": 5,
+          "metadata": "Centauri Picasso Pica on Cosmos Hub",
+          "local": {
+            "native": {
+              "denom": "ibc/F4A4D751F3C3E0545E44EBE27B2FE53AEC1603595ABE06CDF2FF86903D590A63"
+            }
+          },
+          "bridged":{
+            "location_on_network":{
+              "ibc_ics20":{
+                "base_denom":"ppica",
+                "trace_path": "transfer/channel-617"
+              }
+            }
+          }
+        }
+      },            
       {
         "force_asset": {
           "asset_id": "",
@@ -271,7 +327,15 @@
               "denom": "ibc/A585C2D15DCD3B010849B453A2CFCB5E213208A5AB665691792684C26274304D"
             }
           }
-        }
+        },
+        "bridged": {
+          "location_on_network": {
+            "ibc_ics20": {
+              "base_denom": "weth-wei",
+              "trace_path": "transfer/channel-2"
+            }
+          }
+        }        
       },
       {
         "force_asset": {
