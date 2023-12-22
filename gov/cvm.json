@@ -156,8 +156,8 @@
               "seconds": 600
             },
             "ics_20": {
-              "source": "",
-              "sink": ""
+              "source": "transfer/channel-18",
+              "sink": "transfer/channel-17"
             }
           }
         }
@@ -172,8 +172,8 @@
               "seconds": 600
             },
             "ics_20": {
-              "source": "",
-              "sink": ""
+              "source": "transfer/channel-17",
+              "sink": "transfer/channel-18"
             }
           }
         }
