@@ -296,7 +296,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "237684487542793012780631851013",
           "network_id": 3,
           "metadata": "Osmosis Neutron NTRN",
           "local": {
@@ -316,7 +316,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "237684487542793012780631851012",
           "network_id": 3,
           "metadata": "Osmosis CosmosHub Atom",
           "local": {
@@ -336,7 +336,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "237684487542793012780631851013",
           "network_id": 3,
           "metadata": "Osmosis Axelar Ethereum USDC",
           "local": {
@@ -356,7 +356,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "237684487542793012780631851014",
           "network_id": 3,
           "metadata": "Osmosis Axelar Ethereum WETH",
           "local": {
@@ -396,9 +396,9 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "158456325028528675187087900677",
           "metadata": "Centauri Neutron NTRN",
-          "network_id": 3,
+          "network_id": 2,
           "local": {
             "native": {
               "denom": "ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1"
@@ -416,7 +416,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "316912650057057350374175801345",
           "network_id": 4,
           "metadata": "Neutron CosmosHub Atom",
           "local": {
@@ -436,9 +436,21 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "316912650057057350374175801350",
           "network_id": 4,
-          "metadata": "USDC from Axelar",
+          "metadata": "Neutron NTRN",
+          "local": {
+            "native": {
+              "denom": "untrn"
+            }
+          }
+        }
+      },      
+      {
+        "force_asset": {
+          "asset_id": "316912650057057350374175801346",
+          "network_id": 4,
+          "metadata": "Neutron Axelar USDC",
           "local": {
             "native": {
               "denom": "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
@@ -456,7 +468,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "316912650057057350374175801347",
           "network_id": 4,
           "metadata": "Neutron Osmosis OSMO",
           "local": {
@@ -476,7 +488,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "316912650057057350374175801348",
           "network_id": 4,
           "metadata": "Neutron Centauri Picasso PICA",
           "local": {
@@ -496,7 +508,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "396140812571321687967719751681",
           "network_id": 5,
           "metadata": "CosmosHub Osmosis OSMO",
           "local": {
@@ -516,7 +528,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "396140812571321687967719751682",
           "network_id": 5,
           "metadata": "CosmosHub Neutron NTRN",
           "local": {
@@ -536,7 +548,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "396140812571321687967719751683",
           "network_id": 5,
           "metadata": "CosmosHub Centauri Picasso Pica",
           "local": {
@@ -556,7 +568,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "396140812571321687967719751684",
           "network_id": 5,
           "metadata": "CosmosHub ATOM",
           "local": {
@@ -568,7 +580,7 @@
       },
       {
         "force_asset": {
-          "asset_id": "",
+          "asset_id": "316912650057057350374175801349",
           "network_id": 4,
           "metadata": "WETH from Axelar",
           "local": {
@@ -743,6 +755,24 @@
           "this_asset": "237684487542793012780631851010",
           "other_network": 2,
           "other_asset": "158456325028528675187087900674"
+        }
+      },
+
+
+      {
+        "force_asset_to_network_map": {
+          "metadata": "Centauri NTRN -> Neutron",
+          "this_asset": "158456325028528675187087900677",
+          "other_network": 4,
+          "other_asset": "316912650057057350374175801350"
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "metadata": "Neutron OSMO -> Osmosis",
+          "this_asset": "316912650057057350374175801347",
+          "other_network": 3,
+          "other_asset": "237684487542793012780631851010"
         }
       }
     ]
