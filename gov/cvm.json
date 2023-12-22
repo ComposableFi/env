@@ -692,6 +692,19 @@
       {
         "force_exchange": {
           "exchange": {
+            "astroport_router_contract": {
+              "address": "neutron1u4v7xcvkhz8sxs3u9mjhprwc8vwc2p08x0tje4ugtrrkjhkagdysztt5dq",
+              "token_a": "ibc/376222D6D9DAE23092E29740E56B758580935A6D77C24C2ABD57A6A78A1F3955",
+              "token_b": "untrn"
+            }
+          },
+          "exchange_id": "316912650057057350374175801345",
+          "network_id": 4
+        }
+      },      
+      {
+        "force_exchange": {
+          "exchange": {
             "osmosis_pool_manager_module_v1_beta1": {
               "pool_id": 1057,
               "token_a": "uosmo",
