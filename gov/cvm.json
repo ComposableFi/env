@@ -445,7 +445,7 @@
             }
           }
         }
-      },      
+      },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801346",
@@ -587,13 +587,13 @@
             "native": {
               "denom": "ibc/A585C2D15DCD3B010849B453A2CFCB5E213208A5AB665691792684C26274304D"
             }
-          }
-        },
-        "bridged": {
-          "location_on_network": {
-            "ibc_ics20": {
-              "base_denom": "weth-wei",
-              "trace_path": "transfer/channel-2"
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "weth-wei",
+                "trace_path": "transfer/channel-2"
+              }
             }
           }
         }
@@ -701,7 +701,7 @@
           "exchange_id": "316912650057057350374175801345",
           "network_id": 4
         }
-      },      
+      },
       {
         "force_exchange": {
           "exchange": {
@@ -770,8 +770,6 @@
           "other_asset": "158456325028528675187087900674"
         }
       },
-
-
       {
         "force_asset_to_network_map": {
           "metadata": "Centauri NTRN -> Neutron",
