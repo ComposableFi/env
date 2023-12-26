@@ -44,4 +44,3 @@ centaurid tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .forc
 neutrond tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .force_network.network_id == 4) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat cvm.json)" --from=dz -y --gas=auto --gas-adjustment 1.5 -y --fees=1111536untrn
 osmosisd tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .force_network.network_id == 3) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat cvm.json)" --from=dz -y --gas=auto --gas-adjustment 1.5 -y --broadcast-mode sync --fees=5000uosmo --output json
 ```
-
