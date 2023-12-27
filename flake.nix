@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
     composable.url = "github:ComposableFi/composable";
     cvm.url = "github:ComposableFi/cvm";
     nixos-generators = {
@@ -16,7 +16,7 @@
     flake-parts,
     cvm,
     composable,
-    nixpkgs-stable,
+    #nixpkgs-stable,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -177,7 +177,7 @@
         bootstrap-img-path = "${bootstrap-img}/${bootstrap-img-name}.vhd";
 
         deploy-shell = pkgs.mkShell {
-          packages = [pkgs.terraform];
+          packages = [pkgs.opentofu];
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
           TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
           TF_VAR_live_config_path_1 = "${nixos-config-mantis-solver-pica-ntrn}";
@@ -193,7 +193,8 @@
           export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
           export TF_VAR_AWS_REGION="eu-central-1"
           cd terraform/aws
-          ${inputs.nixpkgs-stable.legacyPackages.${system}.terraform}/bin/terraform $@
+          #{inputs.nixpkgs-stable.legacyPackages.{system}.terraform}/bin/terraform $@
+          terraform $@
         '';
       in rec {
         formatter = pkgs.alejandra;
@@ -212,7 +213,7 @@
           buildInputs = with pkgs; [
             awscli2
             nixos-rebuild
-            inputs.nixpkgs-stable.legacyPackages.${system}.terraform
+            # inputs.nixpkgs-stable.legacyPackages.${system}.terraform
             terranix
             terraform-ls
             opentofu

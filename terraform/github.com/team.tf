@@ -15,12 +15,23 @@ data "github_team" "product" {
   slug = "product-mgmt"
 }
 
-data "github_user" "ops" {
-  username = "dzmitry-lahoda"
+
+
+
+resource "github_repository_collaborators" "cvm" {
+  repository = data.github_repository.cvm.name
+  user {
+    permission = "admin"
+    username   = data.github_user.mantis.name
+  }
+  user {
+    permission = "push"
+    username =  data.github_user.python.username
+  }
 }
 
-resource "github_repository_collaborators" "roles" {
-  repository = "composable"
+resource "github_repository_collaborators" "composable" {
+  repository = data.github_repository.composable.name
 
   team {
     permission = "push"
@@ -28,8 +39,12 @@ resource "github_repository_collaborators" "roles" {
   }
 
   user {
+    permission = "push"
+    username =  data.github_user.python.username
+  }
+  user {
     permission = "admin"
-    username   = data.github_user.ops.name
+    username   = data.github_user.mantis.name
   }
 
   user {
