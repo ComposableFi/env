@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
     composable.url = "github:ComposableFi/composable";
     cvm.url = "github:ComposableFi/cvm";
     nixos-generators = {
@@ -16,7 +15,6 @@
     flake-parts,
     cvm,
     composable,
-    #nixpkgs-stable,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -167,7 +165,7 @@
               bootstrap-config-module
               (mkLiveConfigModule mantis-solver-pica-ntrn)
               "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
-            ];
+            ];    
           })
           .config
           .system
@@ -183,19 +181,24 @@
           TF_VAR_live_config_path_1 = "${nixos-config-mantis-solver-pica-ntrn}";
         };
 
-        terraform = pkgs.writeShellScriptBin "terraform" ''
-          if [ -f .env ]; then
-            source .env
-          fi
-          export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
-          export TF_VAR_live_config_path_0="${nixos-config-mantis-solver-pica-osmo}"
-          export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
-          export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
-          export TF_VAR_AWS_REGION="eu-central-1"
-          cd terraform/aws
-          #{inputs.nixpkgs-stable.legacyPackages.{system}.terraform}/bin/terraform $@
-          terraform $@
-        '';
+        terraform = pkgs.writeShellApplication {
+            name = "terraform";
+            runtimeInputs = [pkgs.opentofu]; 
+            text = ''
+                if [ -f .env ]; then
+                  # shellcheck disable=SC1091
+                  source .env
+                fi
+                export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
+                export TF_VAR_live_config_path_0="${nixos-config-mantis-solver-pica-osmo}"
+                export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
+                export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
+                export TF_VAR_AWS_REGION="eu-central-1"
+                cd terraform/aws
+                # shellcheck disable=SC2068
+                tofu $@         
+            '';
+        };
       in rec {
         formatter = pkgs.alejandra;
         packages = {
@@ -213,7 +216,6 @@
           buildInputs = with pkgs; [
             awscli2
             nixos-rebuild
-            # inputs.nixpkgs-stable.legacyPackages.${system}.terraform
             terranix
             terraform-ls
             opentofu
