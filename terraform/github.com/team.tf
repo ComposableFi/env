@@ -28,6 +28,11 @@ resource "github_repository_collaborators" "cvm" {
     permission = "push"
     username =  data.github_user.python.username
   }
+
+  user {
+    permission = "pull"
+    username =  data.github_user.solver_1.username
+  }
 }
 
 resource "github_repository_collaborators" "composable" {

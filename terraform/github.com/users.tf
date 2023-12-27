@@ -7,3 +7,9 @@ data "github_user" "mantis" {
 data "github_user" "python" {
   username = "raserhin"
 }
+
+
+data "github_user" "solver_1" {
+  username = "0xd4t0r"
+}
+
