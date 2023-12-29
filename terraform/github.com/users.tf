@@ -14,7 +14,7 @@ data "github_user" "solver_1" {
 }
 
 data "github_user" "solver_2" {
-  username = "Dodoprof"
+  username = "olegkiselevgit"
 }
 
 
