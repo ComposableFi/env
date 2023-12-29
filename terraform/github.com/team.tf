@@ -33,6 +33,11 @@ resource "github_repository_collaborators" "cvm" {
     permission = "pull"
     username =  data.github_user.solver_1.username
   }
+
+  user {
+    permission = "pull"
+    username =  data.github_user.solver_2.username
+  }
 }
 
 resource "github_repository_collaborators" "composable" {
