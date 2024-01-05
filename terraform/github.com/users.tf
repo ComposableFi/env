@@ -17,5 +17,6 @@ data "github_user" "solver_2" {
   username = "olegkiselevgit"
 }
 
-
-
+data "github_user" "nikita" {
+  username = "RustNinja"
+}
