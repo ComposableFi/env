@@ -194,9 +194,16 @@
                 export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
                 export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
                 export TF_VAR_AWS_REGION="eu-central-1"
-                cd terraform/aws
-                # shellcheck disable=SC2068
-                tofu $@         
+                (
+                  cd terraform/aws
+                  # shellcheck disable=SC2068
+                  tofu $@         
+                )
+                (
+                  cd terraform/github.com
+                  # shellcheck disable=SC2068
+                  tofu $@         
+                )
             '';
         };
       in rec {

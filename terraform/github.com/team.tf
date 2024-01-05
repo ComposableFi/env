@@ -15,8 +15,13 @@ data "github_team" "product" {
   slug = "product-mgmt"
 }
 
-
-
+resource "github_repository_collaborators" "env" {
+  repository = data.github_repository.env.name
+  user {
+    permission = "push"
+    username   = data.github_user.nikita.username
+  }
+}
 
 resource "github_repository_collaborators" "cvm" {
   repository = data.github_repository.cvm.name
@@ -37,6 +42,15 @@ resource "github_repository_collaborators" "cvm" {
   user {
     permission = "pull"
     username =  data.github_user.solver_2.username
+  }
+}
+
+resource "github_repository_collaborators" "cometbft" {
+  repository = data.github_repository.cometbft.name
+
+  user {
+    permission = "maintain"
+    username    = data.github_user.nikita.username
   }
 }
 
@@ -69,7 +83,7 @@ resource "github_repository_collaborators" "composable" {
 
   user {
     permission = "maintain"
-    username   = "RustNinja"
+    username   = data.github_user.nikita.username
   }
 
   team {
