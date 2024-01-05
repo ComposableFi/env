@@ -27,6 +27,7 @@ jobs:
           export TF_VAR_AWS_ACCESS_KEY_ID=${{ secrets.TF_VAR_AWS_ACCESS_KEY_ID }}
           export TF_VAR_AWS_SECRET_ACCESS_KEY=${{ secrets.TF_VAR_AWS_SECRET_ACCESS_KEY }}
           export TF_VAR_MANTIS_COSMOS_MNEMONIC_0=${{ secrets.TF_VAR_MANTIS_COSMOS_MNEMONIC_0 }}
+          export TF_VAR_CACHIX_AUTH_TOKEN=${{ secrets.TF_VAR_CACHIX_AUTH_TOKEN }}
           export TF_VAR_MANTIS_COSMOS_MNEMONIC_1=${{ secrets.TF_VAR_MANTIS_COSMOS_MNEMONIC_1 }}
           export TF_VAR_CI_SSH_KEY=${{ secrets.TF_VAR_CI_SSH_KEY }}      
           export GITHUB_TOKEN=${{ secrets.TF_VAR_GITHUB_TOKEN }}
