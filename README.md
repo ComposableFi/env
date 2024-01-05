@@ -30,6 +30,8 @@ Kudos to this person https://jonascarpay.com/posts/2022-09-19-declarative-deploy
 
 Here is summary of my attempts https://discourse.nixos.org/t/unknown-values-propagation-in-nix-like-in-hcl/26743
 
+Also this one https://github.com/Effect-TS/infra was set is analog of this repo in general. 
+
 # Security
 
 Sure I should also setup security advisory to GitHub hooks and other scanners, to check TF and NIX must not leak secrets, I just did not. 
@@ -39,4 +41,3 @@ Nothing ~~big money~~ serious is in run for now :)
 Anyway bots on cold wallet should tip only needed for operation for hot. 
 
 Use stash rotating accounts for real CryptoOps, etc.
-
