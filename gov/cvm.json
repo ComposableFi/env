@@ -67,8 +67,8 @@
           },
           "outpost": {
             "cosm_wasm": {
-              "contract": "osmo1z3tknhs993sp769xsg57w3au47z4rl3mzqg2vmlzqxft8f7auwjq63dw56",
-              "interpreter_code_id": 376,
+              "contract": "osmo13guwqtt7xdcuhtewc53tpt9jas5xcnk5tvzdxwhn09774m8jpytqr89pry",
+              "interpreter_code_id": 407,
               "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh"
             }
           },
