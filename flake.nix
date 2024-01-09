@@ -227,6 +227,8 @@
             terraform-ls
             opentofu
             composable.packages.${system}.centaurid
+            composable.packages.${system}.neutrond
+            composable.packages.${system}.osmosisd
           ];
         };
       };

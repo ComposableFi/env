@@ -38,8 +38,8 @@
           },
           "outpost": {
             "cosm_wasm": {
-              "contract": "neutron1sugqzfsn4fu7apcah58ez24jrf7ewm6x2c0sz0jwvpkduk4ds88slan52w",
-              "interpreter_code_id": 581,
+              "contract": "neutron1v7fg75ec2382y748wcw5wr5824fjhv7x44n5nn4f3dnej3xfga3skuq5v4",
+              "interpreter_code_id": 608,
               "admin": "neutron1u2sr0p2j75fuezu92nfxg5wm46gu22ywfacpyz"
             }
           },
