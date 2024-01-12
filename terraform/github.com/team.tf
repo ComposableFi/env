@@ -21,6 +21,10 @@ resource "github_repository_collaborators" "env" {
     permission = "push"
     username   = data.github_user.nikita.username
   }
+  user {
+    permission = "pull"
+    username   = data.github_user.sre_2
+  }
 }
 
 resource "github_repository_collaborators" "cvm" {
@@ -74,6 +78,11 @@ resource "github_repository_collaborators" "composable" {
   user {
     permission = "maintain"
     username   = "JafarAz"
+  }
+
+  user {
+    permission = "push"
+    username   = data.github_user.sre_2
   }
 
   user {

@@ -14,3 +14,7 @@ data "github_repository" "cvm" {
 data "github_repository" "cometbft" {
   full_name = "ComposableFi/cometbft"
 }
+
+data "github_organization" "ComposableFi" {
+  name = "ComposableFi"
+}
