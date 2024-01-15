@@ -21,6 +21,10 @@ data "github_user" "nikita" {
   username = "RustNinja"
 }
 
+data "github_user" "candidate_1" {
+  username = "RafilxTenfen"
+}
+
 data "github_user" "sre_2" {
   username = "Ciejo"
 }

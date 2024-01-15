@@ -18,3 +18,7 @@ data "github_repository" "cometbft" {
 data "github_organization" "ComposableFi" {
   name = "ComposableFi"
 }
+
+data "github_repository" "ibc-apps" {
+  name = "ibc-apps"
+}

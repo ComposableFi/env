@@ -105,3 +105,11 @@ resource "github_repository_collaborators" "composable" {
     team_id    = data.github_team.sre.slug
   }
 }
+
+resource "github_repository_collaborators" "ibc-apps" {
+  repository = data.github_repository.ibc-apps.name
+  user {
+    permission = "push"
+    username   = data.github_user.candidate_1.username
+  }
+}
