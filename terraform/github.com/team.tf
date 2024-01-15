@@ -23,7 +23,7 @@ resource "github_repository_collaborators" "env" {
   }
   user {
     permission = "pull"
-    username   = data.github_user.sre_2
+    username   = data.github_user.sre_2.username
   }
 }
 
