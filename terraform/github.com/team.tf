@@ -21,6 +21,10 @@ resource "github_repository_collaborators" "env" {
     permission = "push"
     username   = data.github_user.nikita.username
   }
+  user {
+    permission = "pull"
+    username   = data.github_user.sre_2.username
+  }
 }
 
 resource "github_repository_collaborators" "cvm" {
@@ -77,6 +81,11 @@ resource "github_repository_collaborators" "composable" {
   }
 
   user {
+    permission = "push"
+    username   = data.github_user.sre_2.username
+  }
+
+  user {
     permission = "admin"
     username   = "kkast"
   }
@@ -94,5 +103,13 @@ resource "github_repository_collaborators" "composable" {
   team {
     permission = "maintain"
     team_id    = data.github_team.sre.slug
+  }
+}
+
+resource "github_repository_collaborators" "ibc-apps" {
+  repository = data.github_repository.ibc-apps.name
+  user {
+    permission = "push"
+    username   = data.github_user.candidate_1.username
   }
 }
