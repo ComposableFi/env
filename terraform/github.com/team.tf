@@ -82,7 +82,7 @@ resource "github_repository_collaborators" "composable" {
 
   user {
     permission = "push"
-    username   = data.github_user.sre_2
+    username   = data.github_user.sre_2.username
   }
 
   user {
