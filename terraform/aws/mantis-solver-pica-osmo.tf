@@ -19,7 +19,7 @@ resource "local_sensitive_file" "env_0" {
 }
 
 
-resource "null_resource" "nixos_deployment" {
+resource "null_resource" "nixos_deployment_0" {
   triggers = {
     live_config_path_0 = var.live_config_path_0
     public_dns = aws_instance.mantis_server.public_dns

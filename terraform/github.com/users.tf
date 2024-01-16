@@ -4,7 +4,7 @@ data "github_user" "mantis" {
 }
 
 
-data "github_user" "python" {
+data "github_user" "python_1" {
   username = "raserhin"
 }
 
@@ -13,7 +13,7 @@ data "github_user" "solver_1" {
   username = "0xd4t0r"
 }
 
-data "github_user" "solver_2" {
+data "github_user" "python_2" {
   username = "olegkiselevgit"
 }
 
@@ -28,3 +28,8 @@ data "github_user" "candidate_1" {
 data "github_user" "sre_2" {
   username = "Ciejo"
 }
+
+data "github_user" "solver_2" {
+  username = "gaussianswan"
+}
+

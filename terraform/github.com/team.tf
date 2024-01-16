@@ -18,7 +18,7 @@ data "github_team" "product" {
 resource "github_repository_collaborators" "env" {
   repository = data.github_repository.env.name
   user {
-    permission = "push"
+    permission = "pull"
     username   = data.github_user.nikita.username
   }
   user {
@@ -35,7 +35,11 @@ resource "github_repository_collaborators" "cvm" {
   }
   user {
     permission = "push"
-    username =  data.github_user.python.username
+    username =  data.github_user.python_1.username
+  }
+  user {
+    permission = "push"
+    username =  data.github_user.python_2.username
   }
 
   user {
@@ -44,7 +48,7 @@ resource "github_repository_collaborators" "cvm" {
   }
 
   user {
-    permission = "pull"
+    permission = "push"
     username =  data.github_user.solver_2.username
   }
 }
@@ -65,11 +69,7 @@ resource "github_repository_collaborators" "composable" {
     permission = "push"
     team_id    = data.github_team.devs.slug
   }
-
-  user {
-    permission = "push"
-    username =  data.github_user.python.username
-  }
+  
   user {
     permission = "admin"
     username   = data.github_user.mantis.name
