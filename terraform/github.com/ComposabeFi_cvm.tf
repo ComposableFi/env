@@ -38,7 +38,7 @@ resource "github_branch_protection_v3" "name" {
     required_status_checks {
     strict   = false
     checks = [
-      "ci/check"
+      "main/check"
     ]
   }
 
