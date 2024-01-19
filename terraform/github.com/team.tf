@@ -27,38 +27,14 @@ resource "github_repository_collaborators" "env" {
   }
 }
 
-resource "github_repository_collaborators" "cvm" {
-  repository = data.github_repository.cvm.name
-  user {
-    permission = "admin"
-    username   = data.github_user.mantis.name
-  }
-  user {
-    permission = "push"
-    username =  data.github_user.python_1.username
-  }
-  user {
-    permission = "push"
-    username =  data.github_user.python_2.username
-  }
 
-  user {
-    permission = "pull"
-    username =  data.github_user.solver_1.username
-  }
-
-  user {
-    permission = "push"
-    username =  data.github_user.solver_2.username
-  }
-}
 
 resource "github_repository_collaborators" "cometbft" {
   repository = data.github_repository.cometbft.name
 
   user {
     permission = "maintain"
-    username    = data.github_user.nikita.username
+    username   = data.github_user.nikita.username
   }
 }
 
@@ -69,7 +45,7 @@ resource "github_repository_collaborators" "composable" {
     permission = "push"
     team_id    = data.github_team.devs.slug
   }
-  
+
   user {
     permission = "admin"
     username   = data.github_user.mantis.name

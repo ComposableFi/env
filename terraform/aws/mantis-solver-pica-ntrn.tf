@@ -4,7 +4,7 @@ variable "live_config_path_1" {
 }
 
 variable "MANTIS_COSMOS_MNEMONIC_1" {
-  type = string
+  type      = string
   sensitive = true
 }
 
@@ -21,8 +21,8 @@ resource "local_sensitive_file" "env_1" {
 
 resource "null_resource" "nixos_deployment_1" {
   triggers = {
-    live_config_path = var.live_config_path_1
-    public_dns = aws_instance.mantis_server_1.public_dns
+    live_config_path       = var.live_config_path_1
+    public_dns             = aws_instance.mantis_server_1.public_dns
     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_1
   }
 
@@ -52,10 +52,10 @@ resource "aws_instance" "mantis_server_1" {
 
   provisioner "remote-exec" {
     connection {
-      host = self.public_ip
+      host        = self.public_ip
       private_key = base64decode(var.CI_SSH_KEY)
     }
-    inline = [ "echo 'SSH confirmed!'" ]
+    inline = ["echo 'SSH confirmed!'"]
   }
 
   provisioner "local-exec" {

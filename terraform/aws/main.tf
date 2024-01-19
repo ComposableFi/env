@@ -11,7 +11,7 @@ terraform {
 terraform {
   backend "s3" {
     bucket = "composablefi-env-terraform-aws"
-    key = "default"
+    key    = "default"
     region = "eu-central-1"
   }
 }
@@ -26,7 +26,7 @@ variable "bootstrap_img_path" {
 }
 
 variable "CI_SSH_KEY" {
-  type        = string
+  type      = string
   sensitive = true
 }
 
@@ -65,7 +65,7 @@ resource "aws_ami" "mantis_ami" {
 }
 
 resource "aws_s3_bucket" "mantis_bucket" {
-  
+
 }
 
 resource "aws_s3_object" "image_upload" {

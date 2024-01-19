@@ -29,19 +29,19 @@ provider "github" {
 terraform {
   backend "s3" {
     bucket = "composablefi-env-terraform-github-com"
-    key = "default"
+    key    = "default"
     region = "eu-central-1"
   }
 }
 
 resource "github_actions_secret" "CACHIX_AUTH_TOKEN" {
-  repository       = "composable"
-  secret_name      = "CACHIX_AUTH_TOKEN"
-  plaintext_value  = var.CACHIX_AUTH_TOKEN
+  repository      = "composable"
+  secret_name     = "CACHIX_AUTH_TOKEN"
+  plaintext_value = var.CACHIX_AUTH_TOKEN
 }
 
 resource "github_actions_secret" "cvm_CACHIX_AUTH_TOKEN" {
-  repository       = "cvm"
-  secret_name      = "CACHIX_AUTH_TOKEN"
-  plaintext_value  = var.CACHIX_AUTH_TOKEN
+  repository      = "cvm"
+  secret_name     = "CACHIX_AUTH_TOKEN"
+  plaintext_value = var.CACHIX_AUTH_TOKEN
 }

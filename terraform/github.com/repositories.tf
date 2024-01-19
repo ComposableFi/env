@@ -7,9 +7,6 @@ data "github_repository" "env" {
 }
 
 
-data "github_repository" "cvm" {
-  full_name = "ComposableFi/cvm"
-}
 
 data "github_repository" "cometbft" {
   full_name = "ComposableFi/cometbft"
