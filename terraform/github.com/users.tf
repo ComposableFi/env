@@ -9,6 +9,10 @@ data "github_user" "python_1" {
 }
 
 
+data "github_user" "python_3" {
+  username = "Alliad"
+}
+
 data "github_user" "solver_1" {
   username = "0xd4t0r"
 }
