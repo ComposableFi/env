@@ -10,12 +10,6 @@ resource "github_repository" "arxiv" {
   is_template = false
   delete_branch_on_merge = true
   visibility = "public"
-
-  template {
-    owner                = "github"
-    repository           = "terraform-template-module"
-    include_all_branches = true
-  }
 }
 
 resource "github_repository_collaborators" "arxiv" {
