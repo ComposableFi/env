@@ -19,7 +19,7 @@ resource "github_repository" "arxiv" {
 }
 
 resource "github_repository_collaborators" "arxiv" {
-  repository = data.github_repository.arxiv.name
+  repository = github_repository.arxiv.name
   user {
     permission = "admin"
     username   = data.github_user.docs.username
