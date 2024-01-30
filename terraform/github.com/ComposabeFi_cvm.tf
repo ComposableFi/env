@@ -24,6 +24,11 @@ resource "github_repository_collaborators" "cvm" {
   }
 
   user {
+    permission = "push"
+    username =  data.github_user.docs.username
+  }
+
+  user {
     permission = "pull"
     username =  data.github_user.solver_1.username
   }
