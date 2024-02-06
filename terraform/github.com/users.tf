@@ -37,3 +37,7 @@ data "github_user" "solver_2" {
   username = "gaussianswan"
 }
 
+
+data "github_user" "algorithmist_1" {
+  username = "LautaroLasorsa"
+}

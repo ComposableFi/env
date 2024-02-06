@@ -20,6 +20,10 @@ resource "github_repository_collaborators" "cvm" {
   }
   user {
     permission = "push"
+    username =  data.github_user.algorithmist_1.username
+  }
+  user {
+    permission = "push"
     username =  data.github_user.python_2.username
   }
 
