@@ -10,7 +10,7 @@ variable "MANTIS_COSMOS_MNEMONIC_0" {
 
 resource "local_sensitive_file" "ssh_key" {
   content  = base64decode(var.CI_SSH_KEY)
-  filename = "${path.module}/.terraform/${aws_instance.mantis_server.public_dns}"
+  filename = "${path.module}/.terraform/${aws_instance.mantis_server_osmo.public_dns}"
 }
 
 resource "local_sensitive_file" "env_0" {
@@ -21,14 +21,14 @@ resource "local_sensitive_file" "env_0" {
 
 resource "null_resource" "nixos_deployment_0" {
   triggers = {
-    live_config_path_0     = var.live_config_path_0
-    public_dns             = aws_instance.mantis_server.public_dns
+    live_config_path_0 = var.live_config_path_0
+    public_dns = aws_instance.mantis_server_osmo.public_dns
     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
   }
 
   provisioner "local-exec" {
     command = <<-EOT
-      ssh-keyscan ${aws_instance.mantis_server.public_dns} >> ~/.ssh/known_hosts
+      ssh-keyscan ${aws_instance.mantis_server_osmo.public_dns} >> ~/.ssh/known_hosts
       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
             
       nix-copy-closure $TARGET ${var.live_config_path_0}          
@@ -36,18 +36,18 @@ resource "null_resource" "nixos_deployment_0" {
       ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path_0}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
-      TARGET = "root@${aws_instance.mantis_server.public_dns}"
+      TARGET = "root@${aws_instance.mantis_server_osmo.public_dns}"
     }
   }
 }
 
 output "public_ip" {
-  value = aws_instance.mantis_server.public_dns
+  value = aws_instance.mantis_server_osmo.public_dns
 }
 
-resource "aws_instance" "mantis_server" {
+resource "aws_instance" "mantis_server_osmo" {
   ami                    = aws_ami.mantis_ami.id
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
   provisioner "remote-exec" {
