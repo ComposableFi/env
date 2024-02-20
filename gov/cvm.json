@@ -316,6 +316,26 @@
       },
       {
         "force_asset": {
+          "asset_id": "237684487542793012780631851015",
+          "network_id": 3,
+          "metadata": "????",
+          "local": {
+            "native": {
+              "denom": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "???",
+                "trace_path": "transfer/channel-12345"
+              }
+            }
+          }
+        }
+      }, 
+      {
+        "force_asset": {
           "asset_id": "237684487542793012780631851012",
           "network_id": 3,
           "metadata": "Osmosis CosmosHub Atom",
@@ -794,7 +814,7 @@
             }
           },
           "metadata": "OSMO<->ETH",
-          "exchange_id": "23768448938746742015158701261145",
+          "exchange_id": "2376844893874674201515870126115",
           "network_id": 3
         }
       }, 
@@ -808,7 +828,7 @@
             }
           },
           "metadata": "???",
-          "exchange_id": "23768448938746742015158701261146",
+          "exchange_id": "2376844893874674201515870126116",
           "network_id": 3
         }
       },
@@ -822,7 +842,7 @@
             }
           },
           "metadata": "???",
-          "exchange_id": "237684489387467420151587012611467",
+          "exchange_id": "2376844893874674201515870126117",
           "network_id": 3
         }
       },
@@ -835,8 +855,8 @@
               "token_b": "ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5"
             }
           },
-          "metadata": "???",
-          "exchange_id": "237684489387467420151587012611468",
+          "metadata": "OSMO<->Axelar Ethereum WETH",
+          "exchange_id": "2376844893874674201515870126118",
           "network_id": 3
         }
       },       
