@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     composable.url = "github:ComposableFi/composable";
     cvm.url = "github:ComposableFi/cvm";
+    composable-vm.url = "github:ComposableFi/composable-vm/b850fce8d2d68c2a04c724b232cfecf6723bae93";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +17,7 @@
     flake-parts,
     cvm,
     composable,
+    composable-vm,
     nixpkgs-stable,
     ...
   }:
@@ -66,7 +68,7 @@
         mkLiveConfigModule = script: {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
-          environment.systemPackages = [cvm.packages.${system}.mantis cvm.packages.${system}.mantis-blackbox];
+          environment.systemPackages = [cvm.packages.${system}.mantis composable-vm.packages.${system}.mantis-blackbox];
           systemd.services.mantis = {
             enable = true;
             wantedBy = ["multi-user.target"];
@@ -91,8 +93,8 @@
 
               {
                 networking.firewall.enable = true;
-                networking.firewall.allowedTCPPorts = [80 22 443 22290];
-                environment.systemPackages = [cvm.packages.${system}.mantis-blackbox];
+                networking.firewall.allowedTCPPorts = [80 22 443 22290 8000];
+                environment.systemPackages = [composable-vm.packages.${system}.mantis-blackbox];
                 systemd.services.mantis = {
                   enable = true;
                   wantedBy = ["multi-user.target"];
