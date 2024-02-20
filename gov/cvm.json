@@ -318,7 +318,7 @@
         "force_asset": {
           "asset_id": "237684487542793012780631851015",
           "network_id": 3,
-          "metadata": "????",
+          "metadata": "Osmosis USDT",
           "local": {
             "native": {
               "denom": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
@@ -327,13 +327,13 @@
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
-                "base_denom": "???",
-                "trace_path": "transfer/channel-12345"
+                "base_denom": "erc20/tether/usdt",
+                "trace_path": "transfer/channel-143"
               }
             }
           }
         }
-      }, 
+      },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851012",
@@ -827,7 +827,7 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "???",
+          "metadata": "OSMO<->USDT",
           "exchange_id": "2376844893874674201515870126116",
           "network_id": 3
         }
@@ -841,7 +841,7 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "???",
+          "metadata": "DOT<->USDT",
           "exchange_id": "2376844893874674201515870126117",
           "network_id": 3
         }
