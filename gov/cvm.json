@@ -39,7 +39,7 @@
           "outpost": {
             "cosm_wasm": {
               "contract": "neutron1sugqzfsn4fu7apcah58ez24jrf7ewm6x2c0sz0jwvpkduk4ds88slan52w",
-              "interpreter_code_id": 581,
+              "executor_code_id": 581,
               "admin": "neutron1u2sr0p2j75fuezu92nfxg5wm46gu22ywfacpyz"
             }
           },
@@ -67,8 +67,8 @@
           },
           "outpost": {
             "cosm_wasm": {
-              "contract": "osmo1z3tknhs993sp769xsg57w3au47z4rl3mzqg2vmlzqxft8f7auwjq63dw56",
-              "interpreter_code_id": 376,
+              "contract": "osmo13guwqtt7xdcuhtewc53tpt9jas5xcnk5tvzdxwhn09774m8jpytqr89pry",
+              "executor_code_id": 376,
               "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh"
             }
           },
@@ -97,7 +97,7 @@
           "outpost": {
             "cosm_wasm": {
               "contract": "centauri1vlh6knyx870k2mc9fspx08ka4fuddsxx6s8tjp83n7xkyckkgm8q25mwr6",
-              "interpreter_code_id": 41,
+              "executor_code_id": 41,
               "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k"
             }
           },
