@@ -8,7 +8,7 @@ resource "github_repository_collaborators" "composable-vm" {
   repository = data.github_repository.composable-vm.name
   user {
     permission = "admin"
-    username   = data.github_user.mantis.name
+    username   = data.github_user.mantis.username
   }
   user {
     permission = "push"
@@ -29,12 +29,12 @@ resource "github_repository_collaborators" "composable-vm" {
 
   user {
     permission = "push"
-    username =  data.github_user.docs.usernamew
+    username =  data.github_user.docs.username
   }
 
   user {
     permission = "pull"
-    username =  data.github_user.solver_1.usernames
+    username =  data.github_user.solver_1.username
   }
 
   user {
