@@ -11,7 +11,7 @@ resource "local_sensitive_file" "ssh_key_blackbox" {
 resource "null_resource" "mantis_blackbox_deployment" {
   triggers = {
     image = var.MANTIS_BLACKBOX_CONFIG_PATH
-    host  = aws_instance.mantis_blackbox_server.public_dns
+    host  = aws_instance.mantis_blackbox.public_dns
   }
 
   provisioner "local-exec" {

@@ -1,11 +1,11 @@
 
-data "github_repository" "cvm" {
-  full_name = "ComposableFi/cvm"
+data "github_repository" "composable-vm" {
+  full_name = "ComposableFi/composable-vm"
 }
 
 
-resource "github_repository_collaborators" "cvm" {
-  repository = data.github_repository.cvm.name
+resource "github_repository_collaborators" "composable-vm" {
+  repository = data.github_repository.composable-vm.name
   user {
     permission = "admin"
     username   = data.github_user.mantis.name
@@ -29,12 +29,12 @@ resource "github_repository_collaborators" "cvm" {
 
   user {
     permission = "push"
-    username =  data.github_user.docs.username
+    username =  data.github_user.docs.usernamew
   }
 
   user {
     permission = "pull"
-    username =  data.github_user.solver_1.username
+    username =  data.github_user.solver_1.usernames
   }
 
   user {
@@ -43,8 +43,8 @@ resource "github_repository_collaborators" "cvm" {
   }
 }
 
-resource "github_branch_protection_v3" "name" {
-  repository     = data.github_repository.cvm.name
+resource "github_branch_protection_v3" "composable-vm" {
+  repository     = data.github_repository.composable-vm.name
   branch         = "main"
   enforce_admins = true
 
