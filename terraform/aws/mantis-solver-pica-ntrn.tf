@@ -31,29 +31,30 @@ resource "local_sensitive_file" "mantis-solver-pica-ntrn-env" {
 }
 
 
-resource "null_resource" "mantis_server_ntrn_deploy" {
-  triggers = {
-    live_config_path       = var.live_config_path_1
-    public_dns             = aws_instance.mantis_server_ntrn.public_dns
-    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_1
-  }
+# resource "null_resource" "mantis_server_ntrn_deploy" {
+#   triggers = {
+#     live_config_path       = var.live_config_path_1
+#     public_dns             = aws_instance.mantis_server_ntrn.public_dns
+#     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_1
+#   }
 
-  depends_on = [ aws_instance.mantis_server_ntrn ]
+#   depends_on = [ aws_instance.mantis_server_ntrn ]
 
-  provisioner "local-exec" {
-    command = <<-EOT
-      ssh-keyscan ${aws_instance.mantis_server_ntrn.public_dns} >> ~/.ssh/known_hosts
-      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key_1.filename}"
+#   provisioner "local-exec" {
+#     on_failure = fail
+#     command = <<-EOT
+#       ssh-keyscan ${aws_instance.mantis_server_ntrn.public_dns} >> ~/.ssh/known_hosts
+#       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key_1.filename}"
             
-      nix-copy-closure $TARGET ${var.live_config_path_1}          
-      scp -i ${local_sensitive_file.ssh_key_1.filename} ${local_sensitive_file.mantis-solver-pica-ntrn-env.filename} $TARGET:/root/.env
-      ssh -i ${local_sensitive_file.ssh_key_1.filename} $TARGET '${var.live_config_path_1}/bin/switch-to-configuration switch && nix-collect-garbage'
-      EOT
-    environment = {
-      TARGET = "root@${aws_instance.mantis_server_ntrn.public_dns}"
-    }
-  }
-}
+#       nix-copy-closure $TARGET ${var.live_config_path_1}          
+#       scp -i ${local_sensitive_file.ssh_key_1.filename} ${local_sensitive_file.mantis-solver-pica-ntrn-env.filename} $TARGET:/root/.env
+#       ssh -i ${local_sensitive_file.ssh_key_1.filename} $TARGET '${var.live_config_path_1}/bin/switch-to-configuration switch && nix-collect-garbage'
+#       EOT
+#     environment = {
+#       TARGET = "root@${aws_instance.mantis_server_ntrn.public_dns}"
+#     }
+#   }
+# }
 
 output "MANTIS_SERVER_NTRN_PUBLIC_DNS" {
   value = aws_instance.mantis_server_ntrn.public_dns
