@@ -19,50 +19,48 @@ resource "local_sensitive_file" "env_0" {
 }
 
 
-resource "null_resource" "nixos_deployment_0" {
-  triggers = {
-    live_config_path_0 = var.live_config_path_0
-    public_dns = aws_instance.mantis_server_osmo.public_dns
-    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
-  }
+# resource "null_resource" "mantis_server_osmo_deploy" {
+#   triggers = {
+#     live_config_path_0     = var.live_config_path_0
+#     public_dns             = aws_instance.mantis_server_osmo.public_dns
+#     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
+#   }
 
-  provisioner "local-exec" {
-    command = <<-EOT
-      ssh-keyscan ${aws_instance.mantis_server_osmo.public_dns} >> ~/.ssh/known_hosts
-      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
+#   depends_on = [ aws_instance.mantis_server_osmo ]
+
+#   provisioner "local-exec" {
+#     command = <<-EOT
+#       ssh-keyscan ${aws_instance.mantis_server_osmo.public_dns} >> ~/.ssh/known_hosts
+#       export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key.filename}"
             
-      nix-copy-closure $TARGET ${var.live_config_path_0}          
-      scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env_0.filename} $TARGET:/root/.env
-      ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path_0}/bin/switch-to-configuration switch && nix-collect-garbage'
-      EOT
-    environment = {
-      TARGET = "root@${aws_instance.mantis_server_osmo.public_dns}"
-    }
-  }
-}
+#       nix-copy-closure $TARGET ${var.live_config_path_0}          
+#       scp -i ${local_sensitive_file.ssh_key.filename} ${local_sensitive_file.env_0.filename} $TARGET:/root/.env
+#       ssh -i ${local_sensitive_file.ssh_key.filename} $TARGET '${var.live_config_path_0}/bin/switch-to-configuration switch && nix-collect-garbage'
+#       EOT
+#     environment = {
+#       TARGET = "root@${aws_instance.mantis_server_osmo.public_dns}"
+#     }
+#   }
+# }
 
-output "public_ip" {
+output "MANTIS_SERVER_OSMO_PUBLIC_DNS" {
   value = aws_instance.mantis_server_osmo.public_dns
 }
 
 resource "aws_instance" "mantis_server_osmo" {
+  root_block_device {
+    volume_size = 128
+  }  
   ami                    = aws_ami.mantis_ami.id
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
-  provisioner "remote-exec" {
-    connection {
-      host        = self.public_ip
-      private_key = base64decode(var.CI_SSH_KEY)
-    }
-    inline = ["echo 'SSH confirmed!'"]
-  }
-
   provisioner "local-exec" {
-    command = "ssh-keyscan ${self.public_ip} >> ~/.ssh/known_hosts"
+    command = "sleep 30 && ssh-keygen -R ${self.public_dns} && ssh-keyscan ${self.public_dns} >> ~/.ssh/known_hosts"
+    on_failure = continue
   }
 
   lifecycle {
-    ignore_changes = all
+    ignore_changes = all # really need to ignore unrelevant only
   }
 }
