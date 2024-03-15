@@ -54,8 +54,4 @@ resource "github_branch_protection" "main" {
   # https://github.com/integrations/terraform-provider-github/issues/1481
   # Merge method = Squash and Merge
   # Only merge non-failing pull requests = true
-
-  #  Restrict who can push to matching branches
-  push_restrictions = [
-  ]
 }

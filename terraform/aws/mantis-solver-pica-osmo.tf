@@ -19,12 +19,14 @@ resource "local_sensitive_file" "env_0" {
 }
 
 
-resource "null_resource" "nixos_deployment_0" {
+resource "null_resource" "mantis_server_osmo_deploy" {
   triggers = {
-    live_config_path_0 = var.live_config_path_0
-    public_dns = aws_instance.mantis_server_osmo.public_dns
+    live_config_path_0     = var.live_config_path_0
+    public_dns             = aws_instance.mantis_server_osmo.public_dns
     MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_0
   }
+
+  depends_on = [ aws_instance.mantis_server_osmo ]
 
   provisioner "local-exec" {
     command = <<-EOT
@@ -46,8 +48,11 @@ output "public_ip" {
 }
 
 resource "aws_instance" "mantis_server_osmo" {
+  root_block_device {
+    volume_size = 80
+  }  
   ami                    = aws_ami.mantis_ami.id
-  instance_type          = "t2.medium"
+  instance_type          = "t2.large"
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
   provisioner "remote-exec" {

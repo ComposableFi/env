@@ -14,6 +14,7 @@ resource "null_resource" "mantis_blackbox_deployment" {
     host  = aws_instance.mantis_blackbox.public_dns
   }
 
+  depends_on = [ aws_instance.mantis_blackbox ]
   provisioner "local-exec" {
     command = <<-EOT
       ssh-keyscan ${aws_instance.mantis_blackbox.public_dns} >> ~/.ssh/known_hosts
@@ -33,7 +34,10 @@ output "MANTIS_BLACKBOX_PUBLIC_HOST" {
 
 resource "aws_instance" "mantis_blackbox" {
   ami                    = aws_ami.mantis_ami.id
-  instance_type          = "t2.medium"
+  instance_type          = "t2.large"
+  root_block_device {
+    volume_size = 80
+  }
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
   provisioner "remote-exec" {
