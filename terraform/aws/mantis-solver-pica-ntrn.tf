@@ -55,31 +55,24 @@ resource "null_resource" "mantis_server_ntrn_deploy" {
   }
 }
 
-output "public_ip_1" {
+output "MANTIS_SERVER_NTRN_PUBLIC_DNS" {
   value = aws_instance.mantis_server_ntrn.public_dns
 }
 
 resource "aws_instance" "mantis_server_ntrn" {
   root_block_device {
-    volume_size = 80
+    volume_size = 128
   }
   ami                    = aws_ami.mantis_ami.id
-  instance_type          = "t2.large"
+  instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
-  provisioner "remote-exec" {
-    connection {
-      host        = self.public_ip
-      private_key = base64decode(var.CI_SSH_KEY)
-    }
-    inline = ["echo 'SSH confirmed!'"]
-  }
-
   provisioner "local-exec" {
-    command = "ssh-keyscan ${self.public_ip} >> ~/.ssh/known_hosts"
+    command = "sleep 60 && ssh-keyscan ${self.public_dns} >> ~/.ssh/known_hosts"
+    on_failure = continue
   }
 
   lifecycle {
-    ignore_changes = all
+    ignore_changes = all# really need to ignore unrelevant only
   }
 }
