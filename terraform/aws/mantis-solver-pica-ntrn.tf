@@ -67,8 +67,8 @@ resource "aws_instance" "mantis_server_ntrn" {
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.mantis_security_group.id]
 
-  provisioner "local-exec" {
-    command = "sleep 60 && ssh-keyscan ${self.public_dns} >> ~/.ssh/known_hosts"
+    provisioner "local-exec" {
+    command = "sleep 30 && ssh-keygen -R ${self.public_dns} && ssh-keyscan ${self.public_dns} >> ~/.ssh/known_hosts"
     on_failure = continue
   }
 
