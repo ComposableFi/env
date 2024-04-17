@@ -25,7 +25,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./args.nix
-      ];      
+      ];
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {
         config,
@@ -226,46 +226,35 @@
             ;
           mantis-node-1 = pkgs.writeShellScriptBin "mantis-node-1" mantis-solver-pica-osmo;
         };
-      # mainnet = 
-      #   pkgs.mkShell {
-      #     buildInputs = runtimeInputs;
-      #     EXECUTOR_WASM_FILE = "${
-      #       self.inputs.composable-vm.packages."${system}".cw-cvm-executor
-      #     }/lib/cw_cvm_executor.wasm";
-      #     OUTPOST_WASM_FILE = "${
-      #       self.inputs.composable-vm.packages."${system}".cw-cvm-outpost
-      #     }/lib/cw_cvm_outpost.wasm";
-      #     ORDER_WASM_FILE = "${
-      #       self.inputs.composable-vm.packages."${system}".cw-mantis-order
-      #     }/lib/cw_mantis_order.wasm";
-      #     shellHook = ''
-      #       rm --force --recursive ~/.banksy
-      #       mkdir --parents ~/.banksy/config
-      #       echo 'keyring-backend = "os"' >> ~/.banksy/config/client.toml
-      #       echo 'output = "json"' >> ~/.banksy/config/client.toml
-      #       echo 'node = "${networks.pica.mainnet.NODE}"' >> ~/.banksy/config/client.toml
-      #       echo 'chain-id = "${networks.pica.mainnet.CHAIN_ID}"' >> ~/.banksy/config/client.toml
-      #       rm ~/.osmosisd/config/client.toml
-      #       osmosisd set-env mainnet
-      #     '';
-      #   };
-
-
         devShells.default = let
-         networks = pkgs.networksLib.networks;
-         sh = pkgs.networksLib.sh;
-       in
-      pkgs.mkShell {
-          TF_VAR_bootstrap_img_path = bootstrap-img-path;
-          TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
-          buildInputs = with pkgs; [
-            awscli2
-            nixos-rebuild
-            terranix
-            terraform-ls
-            opentofu
-          ] ++ runtimeInputs;
-        };
+          networks = pkgs.networksLib.networks;
+          sh = pkgs.networksLib.sh;
+        in
+          pkgs.mkShell {
+            TF_VAR_bootstrap_img_path = bootstrap-img-path;
+            TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
+            buildInputs = runtimeInputs;
+            EXECUTOR_WASM_FILE = "${
+              pkgs.cw-cvm-executor
+            }/lib/cw_cvm_executor.wasm";
+            OUTPOST_WASM_FILE = "${
+              pkgs.cw-cvm-outpost
+            }/lib/cw_cvm_outpost.wasm";
+            ORDER_WASM_FILE = "${
+              pkgs.cw-mantis-order
+            }/lib/cw_mantis_order.wasm";
+            shellHook = ''
+              
+              rm --force --recursive ~/.banksy
+              mkdir --parents ~/.banksy/config
+              echo 'keyring-backend = "os"' >> ~/.banksy/config/client.toml
+              echo 'output = "json"' >> ~/.banksy/config/client.toml
+              echo 'node = "${networks.pica.mainnet.NODE}"' >> ~/.banksy/config/client.toml
+              echo 'chain-id = "${networks.pica.mainnet.CHAIN_ID}"' >> ~/.banksy/config/client.toml
+              rm ~/.osmosisd/config/client.toml
+              osmosisd set-env mainnet
+            '';
+          };
       };
     };
 }
