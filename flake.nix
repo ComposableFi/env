@@ -6,7 +6,9 @@
     composable-vm.url = "github:ComposableFi/composable-vm";
     composable-nix.url = "github:ComposableFi/nix";
     composable-networks.url = "github:ComposableFi/networks";
-
+    cosmos = {
+      url = "github:informalsystems/cosmos.nix/dz/38";
+    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +23,9 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./args.nix
+      ];      
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {
         config,
@@ -28,6 +33,7 @@
         inputs',
         pkgs,
         system,
+        buildInputs,
         ...
       }: let
         bootstrap-config-module = {
@@ -218,21 +224,60 @@
             terraform
             ;
           mantis-node-1 = pkgs.writeShellScriptBin "mantis-node-1" mantis-solver-pica-osmo;
-          test = pkgs.writeShellScriptBin "test" ''
-            ${composable-vm.packages.${system}.mantis-blackbox}/bin/mantis-blackbox
-          '';
         };
+      # mainnet = 
+      #   pkgs.mkShell {
+      #     buildInputs = runtimeInputs;
+      #     EXECUTOR_WASM_FILE = "${
+      #       self.inputs.composable-vm.packages."${system}".cw-cvm-executor
+      #     }/lib/cw_cvm_executor.wasm";
+      #     OUTPOST_WASM_FILE = "${
+      #       self.inputs.composable-vm.packages."${system}".cw-cvm-outpost
+      #     }/lib/cw_cvm_outpost.wasm";
+      #     ORDER_WASM_FILE = "${
+      #       self.inputs.composable-vm.packages."${system}".cw-mantis-order
+      #     }/lib/cw_mantis_order.wasm";
+      #     shellHook = ''
+      #       rm --force --recursive ~/.banksy
+      #       mkdir --parents ~/.banksy/config
+      #       echo 'keyring-backend = "os"' >> ~/.banksy/config/client.toml
+      #       echo 'output = "json"' >> ~/.banksy/config/client.toml
+      #       echo 'node = "${networks.pica.mainnet.NODE}"' >> ~/.banksy/config/client.toml
+      #       echo 'chain-id = "${networks.pica.mainnet.CHAIN_ID}"' >> ~/.banksy/config/client.toml
+      #       rm ~/.osmosisd/config/client.toml
+      #       osmosisd set-env mainnet
+      #     '';
+      #   };
 
-        devShells.default = pkgs.mkShell {
+
+        devShells.default = let
+         networks = pkgs.networksLib.networks;
+         sh = pkgs.networksLib.sh;
+       in
+      pkgs.mkShell {
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
           TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
           buildInputs = with pkgs; [
+        # bun
+        # centauri
+        # cw-cvm-executor
+        # cw-cvm-outpost
+        # cw-mantis-order
+        # dasel
+        # getoptions
+        # gex
+        # grpcurl
+        # jq
+        # nix-tree
+        # osmosis
+        # hermes
+        # mantis
+        # mantis-blackbox
             awscli2
             nixos-rebuild
             terranix
             terraform-ls
             opentofu
-            composable.packages.${system}.centaurid
           ];
         };
       };
