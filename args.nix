@@ -28,8 +28,12 @@
         inherit system;
         overlays = with self.inputs; [
           composable-networks.overlays.default
-          # cosmos.overlays.default
+          
           (final: prev: {
+            
+            centauri = self.inputs.cosmos.packages."${system}".centauri;
+            osmosis = self.inputs.cosmos.packages."${system}".osmosis;
+            hermes = self.inputs.cosmos.packages."${system}".hermes;
             cw-cvm-executor = self.inputs.composable-vm.packages."${system}".cw-cvm-executor;
             cw-cvm-outpost = self.inputs.composable-vm.packages."${system}".cw-cvm-outpost;
             cw-mantis-order = self.inputs.composable-vm.packages."${system}".cw-mantis-order;

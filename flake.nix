@@ -34,6 +34,7 @@
         pkgs,
         system,
         buildInputs,
+        runtimeInputs,
         ...
       }: let
         bootstrap-config-module = {
@@ -258,27 +259,12 @@
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
           TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
           buildInputs = with pkgs; [
-        # bun
-        # centauri
-        # cw-cvm-executor
-        # cw-cvm-outpost
-        # cw-mantis-order
-        # dasel
-        # getoptions
-        # gex
-        # grpcurl
-        # jq
-        # nix-tree
-        # osmosis
-        # hermes
-        # mantis
-        # mantis-blackbox
             awscli2
             nixos-rebuild
             terranix
             terraform-ls
             opentofu
-          ];
+          ] ++ runtimeInputs;
         };
       };
     };
