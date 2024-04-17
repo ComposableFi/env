@@ -33,7 +33,7 @@
         bootstrap-config-module = {
           system.stateVersion = "23.05";
           services.openssh.enable = true;
-          environment.systemPackages = [pkgs.chkservice];
+          environment.systemPackages = [];
           users.users.root.openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/PGg+j/Y5gP/e7zyMCyK+f0YfImZgKZ3IUUWmkoGtT dz@pop-os" # dzmitry-lahoda
             "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNY+BfeToEN1+1HTSggNrFHYhYFl9H9dPgIJy558OgWHsYrhMA7PHUy3VK0DjnIT9jFU1PF3/v1tpgUij9bOm6Md6N7Dn2/XL6/FqPNJ9i408V6DdCmH65aJ2tnSJJ4aicD9P39MHVG6tYPKJX9BrHiGzLPLi+c/4CWXIcj/u4aAuvspfCu6a5jWPj03XBwUUbkmdgyvEJ7wJoiOKE1b/Ilxiithau7w0GgHG3e1RUMeVy4aaNET3sTlhiJf4k+cL+7MIM13wUiqjglyzBfMGQKPsaHFuMMsfK4lHploLkBZeopiIxyRzQeRODFsuUSR+J/oL7TiIyMALCEqErRb8OrmPI7NKYRqokfU20YTgOSW+t7JxCx5vtYHyw2HVMZTnSeHAFfcclBh1Vi4vqHymNhJXEh35k/iLdUNdcMgHyqmjZZecpAT3fIULOlGfyfc6kKFmfAYWFcci+ByE0e0T82BlLWJHBuQTByu2w+IzUA81uKBqBqNgLayi49Bpwg5k= dz@pop-os
@@ -197,16 +197,16 @@
                 export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
                 export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
                 export TF_VAR_AWS_REGION="eu-central-1"
-                # (
-                #   cd terraform/github.com
-                #   # shellcheck disable=SC2068
-                #   tofu $@         
-                # )                
                 (
-                  cd terraform/aws
+                  cd terraform/github.com
                   # shellcheck disable=SC2068
                   tofu $@         
-                )
+                )                
+                # (
+                #   cd terraform/aws
+                #   # shellcheck disable=SC2068
+                #   tofu $@         
+                # )
             '';
         };
       in rec {

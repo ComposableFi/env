@@ -13,3 +13,12 @@ resource "github_repository" "nix" {
   web_commit_signoff_required = true
 }
 
+
+resource "github_repository_collaborators" "composable-nix" {
+  repository = github_repository.nix.name
+  user {
+    permission = "push"
+    username   = "banegil"
+  }
+}
+
