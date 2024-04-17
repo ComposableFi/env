@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    composable.url = "github:ComposableFi/composable";
-    cvm.url = "github:ComposableFi/cvm";
-    composable-vm.url = "github:ComposableFi/composable-vm/b850fce8d2d68c2a04c724b232cfecf6723bae93";
+    composable-vm.url = "github:ComposableFi/composable-vm";
+    composable-nix.url = "github:ComposableFi/nix";
+    composable-networks.url = "github:ComposableFi/networks";
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,8 +15,8 @@
 
   outputs = inputs @ {
     flake-parts,
-    cvm,
-    composable,
+    composable-networks,
+    composable-nix,
     composable-vm,
     ...
   }:
@@ -47,7 +48,7 @@
           else
             echo "No .env file found"
           fi
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
         '';
 
         mantis-solver-pica-ntrn = ''
@@ -56,7 +57,7 @@
           else
             echo "No .env file found"
           fi
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${cvm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
         '';
 
         mantis-blackbox-script = ''
@@ -66,7 +67,7 @@
         mkLiveConfigModule = script: {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
-          environment.systemPackages = [cvm.packages.${system}.mantis composable-vm.packages.${system}.mantis-blackbox];
+          environment.systemPackages = [composable-vm.packages.${system}.mantis composable-vm.packages.${system}.mantis-blackbox];
           systemd.services.mantis = {
             enable = true;
             wantedBy = ["multi-user.target"];
@@ -196,11 +197,11 @@
                 export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
                 export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
                 export TF_VAR_AWS_REGION="eu-central-1"
-                (
-                  cd terraform/github.com
-                  # shellcheck disable=SC2068
-                  tofu $@         
-                )                
+                # (
+                #   cd terraform/github.com
+                #   # shellcheck disable=SC2068
+                #   tofu $@         
+                # )                
                 (
                   cd terraform/aws
                   # shellcheck disable=SC2068
