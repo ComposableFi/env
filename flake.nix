@@ -184,7 +184,7 @@
         deploy-shell = pkgs.mkShell {
           packages = [pkgs.opentofu];
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
-          TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver}";
+          TF_VAR_MANTIS_SOLVER_CONFIG_PATH = "${nixos-config-mantis-solver}";
           TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG = "${nixos-config-mantis-solver-simulator}";
         };
 
@@ -197,7 +197,7 @@
               source .env
             fi
             export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
-            export TF_VAR_live_config_path_0="${nixos-config-mantis-solver}"
+            export TF_VAR_MANTIS_SOLVER_CONFIG_PATH="${nixos-config-mantis-solver}"
             export TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG="${nixos-config-mantis-solver-simulator}"
             export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
             export TF_VAR_AWS_REGION="eu-central-1"
@@ -229,7 +229,7 @@
         in
           pkgs.mkShell {
             TF_VAR_bootstrap_img_path = bootstrap-img-path;
-            TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver}";
+            TF_VAR_MANTIS_SOLVER_CONFIG_PATH = "${nixos-config-mantis-solver}";
             buildInputs = runtimeInputs;
             EXECUTOR_WASM_FILE = "${
               pkgs.cw-cvm-executor

@@ -3,7 +3,7 @@ variable "MANTIS_SOLVER_SIMULATOR_CONFIG" {
   description = "Path to the live NixOS config we want to deploy"
 }
 
-variable "MANTIS_COSMOS_MNEMONIC_1" {
+variable "MANTIS_COSMOS_MNEMONIC_SOLVER_SIMULATOR" {
   type      = string
   sensitive = true
 }
@@ -16,13 +16,13 @@ resource "local_sensitive_file" "ssh_key_1" {
 data "template_file" "MANTIS_SOLVER_SIMULATOR_ENV" {
   template = "${file("${path.module}/env.tpl")}"
   vars = {
-    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_1
+    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_SOLVER_SIMULATOR
   }
 }
 
 resource "local_sensitive_file" "MANTIS_SOLVER_SIMULATOR_ENV" {
   depends_on = [ 
-    var.MANTIS_COSMOS_MNEMONIC_1 
+    var.MANTIS_COSMOS_MNEMONIC_SOLVER_SIMULATOR 
     ]
 
   content = data.template_file.MANTIS_SOLVER_SIMULATOR_ENV.rendered
@@ -64,7 +64,7 @@ resource "ssh_resource" "MANTIS_SOLVER_SIMULATOR_DEPLOY" {
 resource "null_resource" "MANTIS_SOLVER_SIMULATOR_DEPLOY" {
   triggers = {
     MANTIS_SOLVER_SIMULATOR_CONFIG       = var.MANTIS_SOLVER_SIMULATOR_CONFIG
-    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_1
+    MANTIS_COSMOS_MNEMONIC = var.MANTIS_COSMOS_MNEMONIC_SOLVER_SIMULATOR
   }
 
   depends_on = [ ssh_resource.MANTIS_SOLVER_SIMULATOR_DEPLOY ]
