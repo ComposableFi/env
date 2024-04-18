@@ -50,7 +50,7 @@
           ];
         };
 
-        mantis-solver-pica-osmo = ''
+        mantis-solver = ''
           ${builtins.readFile ./setup_secrets.sh}
           RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a"  | tee /var/log/mantis.log
         '';
@@ -137,7 +137,7 @@
                 }
               ];
             }
-            (mkLiveConfigModule mantis-solver-pica-osmo)
+            (mkLiveConfigModule mantis-solver)
           ];
         };
 
@@ -151,12 +151,12 @@
           ];
         };
 
-        nixos-config-mantis-solver-pica-osmo =
+        nixos-config-mantis-solver =
           (inputs.nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
               bootstrap-config-module
-              (mkLiveConfigModule mantis-solver-pica-osmo)
+              (mkLiveConfigModule mantis-solver)
               "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
             ];
           })
@@ -184,7 +184,7 @@
         deploy-shell = pkgs.mkShell {
           packages = [pkgs.opentofu];
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
-          TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
+          TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver}";
           TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG = "${nixos-config-mantis-solver-simulator}";
         };
 
@@ -197,7 +197,7 @@
               source .env
             fi
             export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
-            export TF_VAR_live_config_path_0="${nixos-config-mantis-solver-pica-osmo}"
+            export TF_VAR_live_config_path_0="${nixos-config-mantis-solver}"
             export TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG="${nixos-config-mantis-solver-simulator}"
             export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
             export TF_VAR_AWS_REGION="eu-central-1"
@@ -221,7 +221,7 @@
             bootstrap-img
             terraform
             ;
-          mantis-node-1 = pkgs.writeShellScriptBin "mantis-node-1" mantis-solver-pica-osmo;
+          mantis-node-1 = pkgs.writeShellScriptBin "mantis-node-1" mantis-solver;
         };
         devShells.default = let
           networks = pkgs.networksLib.networks;
@@ -229,7 +229,7 @@
         in
           pkgs.mkShell {
             TF_VAR_bootstrap_img_path = bootstrap-img-path;
-            TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
+            TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver}";
             buildInputs = runtimeInputs;
             EXECUTOR_WASM_FILE = "${
               pkgs.cw-cvm-executor
