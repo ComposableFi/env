@@ -236,8 +236,7 @@
             ORDER_WASM_FILE = "${
               pkgs.cw-mantis-order
             }/lib/cw_mantis_order.wasm";
-            shellHook = ''
-              
+            shellHook = ''          
               rm --force --recursive ~/.banksy
               mkdir --parents ~/.banksy/config
               echo 'keyring-backend = "os"' >> ~/.banksy/config/client.toml
