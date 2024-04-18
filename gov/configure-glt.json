@@ -1081,42 +1081,42 @@
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900675",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851011"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851011",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900675"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900673",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851009"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851009",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900673"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900674",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851010"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851010",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900674"
         }
       },
@@ -1124,7 +1124,7 @@
         "force_asset_to_network_map": {
           "metadata": "Centauri NTRN -> Neutron",
           "from_asset_id": "158456325028528675187087900677",
-          "to_network": 4,
+          "to_network_id": 4,
           "to_asset_id": "316912650057057350374175801350"
         }
       },
@@ -1132,7 +1132,7 @@
         "force_asset_to_network_map": {
           "metadata": "Neutron NTRN -> Centauri",
           "from_asset_id": "316912650057057350374175801350",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900677"
         }
       },
@@ -1140,63 +1140,63 @@
         "force_asset_to_network_map": {
           "metadata": "Neutron OSMO -> Osmosis",
           "from_asset_id": "316912650057057350374175801347",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851010"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900680",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851014"
         }
       },
       {
         "force_asset_to_network_map": {
           "to_asset_id": "158456325028528675187087900680",
-          "to_network": 3,
+          "to_network_id": 3,
           "from_asset_id": "237684487542793012780631851014"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851013",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900682"
         }
       },
       {
         "force_asset_to_network_map": {
           "to_asset_id": "237684487542793012780631851013",
-          "to_network": 3,
+          "to_network_id": 3,
           "from_asset_id": "158456325028528675187087900682"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851015",
-          "to_network": 2,
+          "to_network_id": 2,
           "to_asset_id": "158456325028528675187087900681"
         }
       },
       {
         "force_asset_to_network_map": {
           "to_asset_id": "237684487542793012780631851015",
-          "to_network": 3,
+          "to_network_id": 3,
           "from_asset_id": "158456325028528675187087900681"
         }
       },
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900678",
-          "to_network": 3,
+          "to_network_id": 3,
           "to_asset_id": "237684487542793012780631851012"
         }
       },
       {
         "force_asset_to_network_map": {
           "to_asset_id": "158456325028528675187087900678",
-          "to_network": 2,
+          "to_network_id": 2,
           "from_asset_id": "237684487542793012780631851012"
         }
       }
