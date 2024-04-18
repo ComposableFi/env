@@ -60,11 +60,7 @@
         '';
 
         mantis-solver-simulator = ''
-          if [ -f /root/.env ]; then
-            source /root/.env
-          else
-            echo "No .env file found"
-          fi
+          ${builtins.readFile ./setup_secrets.sh}
           RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC_NODE}" --grpc-centauri "${networks.pica.mainnet.GRPC_NODE}" --order-contract "$ORDER_CONTRACT" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "$CVM_CONTRACT" --main-chain-id="$CHAIN_ID" | tee /var/log/mantis.log
         '';
 
