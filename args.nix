@@ -28,6 +28,7 @@
         terranix
         terraform-ls
         opentofu
+        unixtools.watch
       ];
       pkgs = import self.inputs.nixpkgs {
         inherit system;

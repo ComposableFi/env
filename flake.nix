@@ -57,7 +57,7 @@
 
         mantis-solver-simulator = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=1 RUST_TRACE=trace watch --no-title  --interval=60 --exec ${composable-vm.packages.${system}.mantis}/bin/mantis mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "$ORDER_CONTRACT" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "$CVM_CONTRACT" --main-chain-id="$CHAIN_ID" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${pkgs.busybox}/bin/watch -n 60 ${composable-vm.packages.${system}.mantis}/bin/mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}" | tee /var/log/mantis.log
         '';
 
         mantis-blackbox-script = ''
@@ -67,7 +67,11 @@
         mkLiveConfigModule = script: {
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
-          environment.systemPackages = [composable-vm.packages.${system}.mantis composable-vm.packages.${system}.mantis-blackbox];
+          environment.systemPackages = [
+            composable-vm.packages.${system}.mantis 
+            composable-vm.packages.${system}.mantis-blackbox 
+            pkgs.busybox
+            ];
           systemd.services.mantis = {
             enable = true;
             wantedBy = ["multi-user.target"];
