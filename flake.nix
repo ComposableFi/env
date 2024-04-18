@@ -52,12 +52,12 @@
 
         mantis-solver = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a"  | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}"  --router="http://ec2-54-246-72-76.eu-west-1.compute.amazonaws.com:8000/" | tee /var/log/mantis.log
         '';
 
         mantis-solver-simulator = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${pkgs.busybox}/bin/watch -n 60 ${composable-vm.packages.${system}.mantis}/bin/mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${pkgs.procps}/bin/watch --no-title --interval=6 --exec ${composable-vm.packages.${system}.mantis}/bin/mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}" | tee /var/log/mantis.log
         '';
 
         mantis-blackbox-script = ''
@@ -70,7 +70,7 @@
           environment.systemPackages = [
             composable-vm.packages.${system}.mantis 
             composable-vm.packages.${system}.mantis-blackbox 
-            pkgs.busybox
+            pkgs.procps
             ];
           systemd.services.mantis = {
             enable = true;
