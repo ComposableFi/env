@@ -1,4 +1,4 @@
-## How to deploy and configure mainnet
+# How to deploy and configure mainnet
 
 ```sh
 nix develop composable#centauri-mainnet" --impure

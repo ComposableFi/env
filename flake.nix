@@ -58,13 +58,15 @@
           RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" | tee /var/log/mantis.log
         '';
 
-        mantis-solver-pica-ntrn = ''
+        mantis-solver-simulator = ''
           if [ -f /root/.env ]; then
             source /root/.env
           else
             echo "No .env file found"
           fi
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis mantis simulate --rpc-centauri "$RPC_CENTAURI" --grpc-centauri "$GRPC_CENTAURI" --order-contract "$ORDER_CONTRACT" --wallet "$WALLET" --coins "10000ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518,10000ppica" --cvm-contract "$CVM_CONTRACT" --main-chain-id="$CHAIN_ID"
+          
+          solve --rpc-centauri "https://composable-rpc.polkachu.com:443" --grpc-centauri "https://composable-grpc.polkachu.com:22290" --cvm-contract "centauri1wpf2szs4uazej8pe7g8vlck34u24cvxx7ys0esfq6tuw8yxygzuqpjsn0d" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri10tpdfqavjtskze6325ragz66z2jyr6l76vq9h9g4dkhqv748sses6pzs0a" --simulate "200000ppica,100ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1" | tee /var/log/mantis.log
         '';
 
         mantis-blackbox-script = ''
@@ -168,12 +170,12 @@
           .build
           .toplevel;
 
-        nixos-config-mantis-solver-pica-ntrn =
+        nixos-config-mantis-solver-simulator =
           (inputs.nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
               bootstrap-config-module
-              (mkLiveConfigModule mantis-solver-pica-ntrn)
+              (mkLiveConfigModule mantis-solver-simulator)
               "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
             ];
           })
@@ -188,7 +190,7 @@
           packages = [pkgs.opentofu];
           TF_VAR_bootstrap_img_path = bootstrap-img-path;
           TF_VAR_live_config_path_0 = "${nixos-config-mantis-solver-pica-osmo}";
-          TF_VAR_live_config_path_1 = "${nixos-config-mantis-solver-pica-ntrn}";
+          TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG = "${nixos-config-mantis-solver-simulator}";
         };
 
         terraform = pkgs.writeShellApplication {
@@ -201,7 +203,7 @@
             fi
             export TF_VAR_bootstrap_img_path="${bootstrap-img-path}"
             export TF_VAR_live_config_path_0="${nixos-config-mantis-solver-pica-osmo}"
-            export TF_VAR_live_config_path_1="${nixos-config-mantis-solver-pica-ntrn}"
+            export TF_VAR_MANTIS_SOLVER_SIMULATOR_CONFIG="${nixos-config-mantis-solver-simulator}"
             export TF_VAR_MANTIS_BLACKBOX_CONFIG_PATH="${nixos-config-mantis-blackbox}"
             export TF_VAR_AWS_REGION="eu-central-1"
             # (

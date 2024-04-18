@@ -3,6 +3,10 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
+    ssh = {
+      source = "loafoe/ssh"
+      version = "2.7.0"
+    }    
   }
   required_version = ">= 1.2.0"
 }
