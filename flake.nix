@@ -37,7 +37,7 @@
         runtimeInputs,
         ...
       }: let
-              networks = pkgs.networksLib.networks;
+        networks = pkgs.networksLib.networks;
         bootstrap-config-module = {
           system.stateVersion = "23.05";
           services.openssh.enable = true;
@@ -68,10 +68,10 @@
           networking.firewall.enable = true;
           networking.firewall.allowedTCPPorts = [80 22 443 22290];
           environment.systemPackages = [
-            composable-vm.packages.${system}.mantis 
-            composable-vm.packages.${system}.mantis-blackbox 
+            composable-vm.packages.${system}.mantis
+            composable-vm.packages.${system}.mantis-blackbox
             pkgs.procps
-            ];
+          ];
           systemd.services.mantis = {
             enable = true;
             wantedBy = ["multi-user.target"];
@@ -240,7 +240,7 @@
             ORDER_WASM_FILE = "${
               pkgs.cw-mantis-order
             }/lib/cw_mantis_order.wasm";
-            shellHook = ''          
+            shellHook = ''
               rm --force --recursive ~/.banksy
               mkdir --parents ~/.banksy/config
               echo 'keyring-backend = "os"' >> ~/.banksy/config/client.toml
