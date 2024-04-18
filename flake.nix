@@ -52,15 +52,16 @@
 
         mantis-solver = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}"  --router="http://ec2-54-246-72-76.eu-west-1.compute.amazonaws.com:8000/" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}"  --router="http://ec2-54-246-72-76.eu-west-1.compute.amazonaws.com:8000" | tee /var/log/mantis.log
         '';
 
         mantis-solver-simulator = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=1 RUST_TRACE=trace ${pkgs.procps}/bin/watch --no-title --interval=6 --exec ${composable-vm.packages.${system}.mantis}/bin/mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "200000ppica,10ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}" | tee /var/log/mantis.log
+          RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis simulate --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --wallet "$MANTIS_COSMOS_MNEMONIC" --coins "20000000000ppica,10000ibc/47BD209179859CDE4A2806763D7189B6E6FE13A17880FE2B42DE1E6C1E329E23" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}" | tee /var/log/mantis.log
         '';
 
         mantis-blackbox-script = ''
+          export CVM_ADDRESS='osmo15rquxg3zw8tcgj82hkz2qzy4f69nzzt5yl2qlgqkw6l9drlhfvcsr2yc8y'
           RUST_BACKTRACE=1 RUST_TRACE=trace ${composable-vm.packages.${system}.mantis-blackbox}/bin/mantis-blackbox | tee /var/log/blackbox.log
         '';
 
@@ -72,18 +73,21 @@
             composable-vm.packages.${system}.mantis-blackbox
             pkgs.procps
           ];
-          systemd.services.mantis = {
-            enable = true;
-            wantedBy = ["multi-user.target"];
-            after = ["network.target"];
-            inherit script;
-            unitConfig = {
-              StartLimitIntervalSec = 0;
-              StartLimitBurst = 2147483647;
-            };
-            serviceConfig = {
-              Restart = "always";
-              Type = "simple";
+          systemd.services = {
+            mantis = {
+              enable = true;
+              wantedBy = ["multi-user.target"];
+              after = ["network.target"];
+              inherit script;
+              unitConfig = {
+                StartLimitIntervalSec = 0;
+                StartLimitBurst = 2147483647;
+              };
+              serviceConfig = {
+                Restart = "always";
+                Type = "simple";
+                RestartSec = 6;
+              };
             };
           };
         };
