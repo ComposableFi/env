@@ -8,7 +8,7 @@ variable "MANTIS_COSMOS_MNEMONIC_SOLVER_SIMULATOR" {
   sensitive = true
 }
 
-resource "local_sensitive_file" "ssh_key_1" {
+resource "local_sensitive_file" "SSH_KEY_MANTIS_SOLVER_SIMULATOR" {
   content  = base64decode(var.CI_SSH_KEY)
   filename = "${path.module}/.terraform/${aws_instance.MANTIS_SOLVER_SIMULATOR.public_dns}"
 }
@@ -49,7 +49,7 @@ resource "aws_instance" "MANTIS_SOLVER_SIMULATOR" {
 resource "ssh_resource" "MANTIS_SOLVER_SIMULATOR_DEPLOY" {
   host= aws_instance.MANTIS_SOLVER_SIMULATOR.public_dns 
   user = "root"
-  private_key = local_sensitive_file.ssh_key_1.filename
+  private_key = local_sensitive_file.SSH_KEY_MANTIS_SOLVER_SIMULATOR.filename
   commands = [
     "echo 42"
   ]
@@ -72,10 +72,10 @@ resource "null_resource" "MANTIS_SOLVER_SIMULATOR_DEPLOY" {
   provisioner "local-exec" {
     on_failure = fail
     command = <<-EOT
-      export NIX_SSHOPTS="-i ${local_sensitive_file.ssh_key_1.filename}"
+      export NIX_SSHOPTS="-i ${local_sensitive_file.SSH_KEY_MANTIS_SOLVER_SIMULATOR.filename}"
       nix-copy-closure $TARGET ${var.MANTIS_SOLVER_SIMULATOR_CONFIG}          
-      scp -i ${local_sensitive_file.ssh_key_1.filename} ${local_sensitive_file.MANTIS_SOLVER_SIMULATOR_ENV.filename} $TARGET:/root/.env
-      ssh -i ${local_sensitive_file.ssh_key_1.filename} $TARGET '${var.MANTIS_SOLVER_SIMULATOR_CONFIG}/bin/switch-to-configuration switch && nix-collect-garbage'
+      scp -i ${local_sensitive_file.SSH_KEY_MANTIS_SOLVER_SIMULATOR.filename} ${local_sensitive_file.MANTIS_SOLVER_SIMULATOR_ENV.filename} $TARGET:/root/.env
+      ssh -i ${local_sensitive_file.SSH_KEY_MANTIS_SOLVER_SIMULATOR.filename} $TARGET '${var.MANTIS_SOLVER_SIMULATOR_CONFIG}/bin/switch-to-configuration switch && nix-collect-garbage'
       EOT
     environment = {
       TARGET = "root@${aws_instance.MANTIS_SOLVER_SIMULATOR.public_dns}"
