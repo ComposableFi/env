@@ -31,7 +31,7 @@ $BINARY tx wasm store "$EXECUTOR_WASM_FILE" --from=dz --gas=auto --gas-adjustmen
 ## Configure
 
 ```sh
-centaurid tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .force_network.network_id == 2) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat cvm.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y
-neutrond tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .force_network.network_id == 4) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat cvm.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y --fees=1111536untrn
-osmosisd tx wasm execute $(cat cvm.json  | jq '.config.force[] | select ( .force_network.network_id == 3) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat cvm.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y --broadcast-mode=sync --fees=10000uosmo --output json
+centaurid tx wasm execute $(cat configure-glt.json  | jq '.config.force[] | select ( .force_network.network_id == 2) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat configure-glt.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y
+neutrond tx wasm execute $(cat configure-glt.json  | jq '.config.force[] | select ( .force_network.network_id == 4) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat configure-glt.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y --fees=1111536untrn
+osmosisd tx wasm execute $(cat configure-glt.json  | jq '.config.force[] | select ( .force_network.network_id == 3) | .force_network.outpost.cosm_wasm.contract' -r) "$(cat configure-glt.json)" --from=dz -y --gas=auto --gas-adjustment=1.5 -y --broadcast-mode=sync --fees=10000uosmo --output=json
 ```
