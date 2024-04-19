@@ -551,7 +551,7 @@
               "denom": "ibc/???"
             }
           },
-          "metadata": "Centauri Osmosis ??? USDC",
+          "metadata": "Centauri Osmosis Axelar Ethereum USDC",
           "network_id": 2
         }
       },
@@ -1267,6 +1267,13 @@
         "force_asset_to_network_map": {
           "from_asset_id": "237684487542793012780631851012",
           "to_asset_id": "158456325028528675187087900678",
+          "to_network_id": 2
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "???",
+          "to_asset_id": "???",
           "to_network_id": 2
         }
       }
