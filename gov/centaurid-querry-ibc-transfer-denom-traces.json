@@ -1,0 +1,312 @@
+{
+  "denom_traces": [
+    {
+      "path": "transfer/channel-0",
+      "base_denom": "uhuahua"
+    },
+    {
+      "path": "transfer/channel-1",
+      "base_denom": "1"
+    },
+    {
+      "path": "transfer/channel-10",
+      "base_denom": "inj"
+    },
+    {
+      "path": "transfer/channel-11",
+      "base_denom": "ubcre"
+    },
+    {
+      "path": "transfer/channel-11",
+      "base_denom": "ucre"
+    },
+    {
+      "path": "transfer/channel-13",
+      "base_denom": "ubld"
+    },
+    {
+      "path": "transfer/channel-13",
+      "base_denom": "uist"
+    },
+    {
+      "path": "transfer/channel-14/transfer/channel-11",
+      "base_denom": "uhuahua"
+    },
+    {
+      "path": "transfer/channel-14",
+      "base_denom": "uscrt"
+    },
+    {
+      "path": "transfer/channel-17/transfer/channel-1557",
+      "base_denom": "ppica"
+    },
+    {
+      "path": "transfer/channel-18",
+      "base_denom": "untrn"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "1"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "130"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "2007"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "2125"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "23"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "31"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "32"
+    },
+    {
+      "path": "transfer/channel-2",
+      "base_denom": "4"
+    },
+    {
+      "path": "transfer/channel-2/transfer/channel-15",
+      "base_denom": "2006"
+    },
+    {
+      "path": "transfer/channel-2/transfer/channel-15",
+      "base_denom": "6"
+    },
+    {
+      "path": "transfer/channel-2/transfer/channel-15",
+      "base_denom": "79228162514264337593543950342"
+    },
+    {
+      "path": "transfer/channel-2/transfer/channel-15",
+      "base_denom": "79228162514264337593543950370"
+    },
+    {
+      "path": "transfer/channel-2/transfer/channel-15",
+      "base_denom": "79228162514264337593543952342"
+    },
+    {
+      "path": "transfer/channel-20",
+      "base_denom": "uumee"
+    },
+    {
+      "path": "transfer/channel-21",
+      "base_denom": "inj"
+    },
+    {
+      "path": "transfer/channel-26",
+      "base_denom": "cw20:secret153wu605vvp934xhd4k9dtd640zsep5jkesstdm"
+    },
+    {
+      "path": "transfer/channel-26",
+      "base_denom": "cw20:secret1fl449muk5yq8dlad7a22nje4p5d2pnsgymhjfd"
+    },
+    {
+      "path": "transfer/channel-27",
+      "base_denom": "ukuji"
+    },
+    {
+      "path": "transfer/channel-28",
+      "base_denom": "uluna"
+    },
+    {
+      "path": "transfer/channel-29",
+      "base_denom": "inj"
+    },
+    {
+      "path": "transfer/channel-3",
+      "base_denom": "factory/osmo1pfyxruwvtwk00y8z06dh2lqjdj82ldvy74wzm3/WOSMO"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-0/transfer/channel-281/transfer/channel-10/transfer/channel-1279/transfer/channel-4",
+      "base_denom": "uatom"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-0/transfer/channel-584/transfer/channel-0/transfer/channel-1279",
+      "base_denom": "ppica"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-0/transfer/channel-617",
+      "base_denom": "ppica"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-0",
+      "base_denom": "uatom"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-143",
+      "base_denom": "erc20/tether/usdt"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-208",
+      "base_denom": "weth-wei"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-2188",
+      "base_denom": "ucore"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-2494",
+      "base_denom": "upasg"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-75",
+      "base_denom": "ustars"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-750",
+      "base_denom": "uusdc"
+    },
+    {
+      "path": "transfer/channel-3/transfer/channel-782",
+      "base_denom": "usei"
+    },
+    {
+      "path": "transfer/channel-3",
+      "base_denom": "uosmo"
+    },
+    {
+      "path": "transfer/channel-38",
+      "base_denom": "utia"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-141/transfer/channel-1279",
+      "base_denom": "ppica"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-141/transfer/channel-1279/transfer/channel-2/transfer/channel-15",
+      "base_denom": "6"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-141/transfer/channel-1279/transfer/channel-4",
+      "base_denom": "uatom"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-391",
+      "base_denom": "ustrd"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-584/transfer/channel-0/transfer/channel-1279",
+      "base_denom": "ppica"
+    },
+    {
+      "path": "transfer/channel-4/transfer/channel-660",
+      "base_denom": "ucore"
+    },
+    {
+      "path": "transfer/channel-4",
+      "base_denom": "uatom"
+    },
+    {
+      "path": "transfer/channel-46",
+      "base_denom": "uaxl"
+    },
+    {
+      "path": "transfer/channel-5",
+      "base_denom": "staevmos"
+    },
+    {
+      "path": "transfer/channel-5",
+      "base_denom": "stuatom"
+    },
+    {
+      "path": "transfer/channel-5",
+      "base_denom": "ustrd"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "0x6b175474e89094c44da98b954eedeac495271d0f"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "0xac3e018457b222d93114458476f3e3416abbe38f"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "crv-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "crvusd-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "dai-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "eth-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "frax-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "fxs-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "pepe-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "reth-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "sfrax-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "sfrxeth-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "steth-wei"
+    },
+    {
+      "path": "transfer/channel-52",
+      "base_denom": "wbtc-satoshi"
+    },
+    {
+      "path": "transfer/channel-53",
+      "base_denom": "33WVSef9zaw49KbNdPGTmACVRnAXzN3o1fsqbUrLp2mh"
+    },
+    {
+      "path": "transfer/channel-55",
+      "base_denom": "33WVSef9zaw49KbNdPGTmACVRnAXzN3o1fsqbUrLp2mh"
+    },
+    {
+      "path": "transfer/channel-6",
+      "base_denom": "ustars"
+    },
+    {
+      "path": "transfer/channel-7",
+      "base_denom": "aevmos"
+    }
+  ],
+  "pagination": {
+    "next_key": null,
+    "total": "0"
+  }
+}

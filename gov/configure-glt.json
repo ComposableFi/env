@@ -467,33 +467,13 @@
           },
           "local": {
             "native": {
-              "denom": "ibc/???"
+              "denom": "ibc/F34DC2408B2EB193D2A82388AC5F9AC86282B14BBF623A8581BBE075654547CD"
             }
           },
           "metadata": "Centauri Osmosis CosmosHub ATOM",
           "network_id": 2
         }
-      },
-      {
-        "force_asset": {
-          "asset_id": "158456325028528675187087900679",
-          "bridged": {
-            "location_on_network": {
-              "ibc_ics20": {
-                "base_denom": "ustars",
-                "trace_path": "transfer/channel-3/transfer/channel-75"
-              }
-            }
-          },
-          "local": {
-            "native": {
-              "denom": "ibc/???"
-            }
-          },
-          "metadata": "Centauri Osmosis ??? STARS",
-          "network_id": 2
-        }
-      },
+      },     
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900680",
@@ -507,7 +487,7 @@
           },
           "local": {
             "native": {
-              "denom": "ibc/???"
+              "denom": "ibc/F472078E60F4AA887DA65A6009E501882594AAA5721C3C13F54724E6B29F1718"
             }
           },
           "metadata": "Centauri Osmosis ??? WETH",
@@ -527,7 +507,7 @@
           },
           "local": {
             "native": {
-              "denom": "ibc/???"
+              "denom": "ibc/B063BCBCD45084893C9889EBE472D666F7E6F56300897DCECDFD7EB88C3E8609"
             }
           },
           "metadata": "Centauri Osmosis ??? USDT",
@@ -814,6 +794,75 @@
             }
           },
           "metadata": "Centauri CosmosHub ATOM",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900677",
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "trace_path": "transfer/channel-3/transfer/channel-750",
+                "base_denom": "uusdc"
+              }
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/247DEF7C0E022DC3FAF5EB13A38C616252B5B85651803E03710CCBD581673C87"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? USDC",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900683",
+          "bridged": {
+            "ibc_ics20" : {
+              "trace_path": "transfer/channel-2/transfer/channel-15",
+              "base_denom": "79228162514264337593543950342"
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/3CC19CEC7E5A3E90E78A5A9ECC5A0E2F8F826A375CF1E096F4515CF09DA3E366"
+            }
+          },
+          "metadata": "Centauri Picasso ???",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900684",
+          "bridged": {
+            "ibc_ics20": {
+              "trace_path": "transfer/channel-3/transfer/channel-75",
+              "base_denom":"ustars"
+            }
+          },
+          "local": {
+            "native": {
+              "denom":"ibc/4472060867B1527ECE6456D82B463A536EAF4ABC57E0099FF5302F4C93D8C65E"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? STARS",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900686",
+          "bridged": {},
+          "local": {
+            "native": {
+              "denom":"ibc/F34DC2408B2EB193D2A82388AC5F9AC86282B14BBF623A8581BBE075654547CD"
+            }
+          },
+          "metadata": "Centauri ???",
           "network_id": 2
         }
       },
