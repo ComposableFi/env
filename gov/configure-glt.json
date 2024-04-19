@@ -1184,6 +1184,20 @@
         "force_exchange": {
           "exchange": {
             "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1076,
+              "token_a": "uosmo",
+              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126130",
+          "metadata": "OSMO<->USDT",
+          "network_id": 3
+        }
+      },      
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
               "pool_id": 1,
               "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
               "token_b": "uosmo"
