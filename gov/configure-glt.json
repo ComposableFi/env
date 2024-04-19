@@ -1077,7 +1077,7 @@
           "metadata": "OSMO<->ATOM",
           "network_id": 3
         }
-      },
+      },    
       {
         "force_exchange": {
           "exchange": {
@@ -1148,6 +1148,52 @@
           "network_id": 3
         }
       },
+      
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 678,
+              "token_a": "uosmo",
+              "token_b": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126126",
+          "metadata": "OSMO<->USDC",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1212,
+              "token_a": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858",
+              "token_b": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126127",
+          "metadata": "USDC<->USDC",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1081,
+              "token_a": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858",
+              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126128",
+          "metadata": "ETH<->USDT",
+          "network_id": 3
+        }
+      },      
+
+      /// 
+
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900675",
