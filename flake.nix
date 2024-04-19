@@ -53,7 +53,7 @@
         # run by 3rd party
         mantis-solver = ''
           ${builtins.readFile ./setup_secrets.sh}
-          RUST_BACKTRACE=full RUST_TRACE=debug ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}"  --router="http://ec2-54-246-72-76.eu-west-1.compute.amazonaws.com:8000" | tee /var/log/mantis.log
+          RUST_BACKTRACE=full RUST_TRACE=trace ${composable-vm.packages.${system}.mantis}/bin/mantis solve --rpc-centauri "${networks.pica.mainnet.RPC}" --grpc-centauri "${networks.pica.mainnet.GRPC}" --cvm-contract "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq" --wallet "$MANTIS_COSMOS_MNEMONIC" --order-contract "centauri19gddjsu00zdlpjkw3s43fuxvftvsfg5usara65awwzn63v3lqj0s57la25" --main-chain-id="${networks.pica.mainnet.CHAIN_ID}"  --router="http://ec2-54-246-72-76.eu-west-1.compute.amazonaws.com:8000" | tee /var/log/mantis.log
         '';
 
 
@@ -89,7 +89,7 @@
               serviceConfig = {
                 Restart = "always";
                 Type = "simple";
-                RestartSec = 2;
+                RestartSec = 1;
               };
             };
           };
