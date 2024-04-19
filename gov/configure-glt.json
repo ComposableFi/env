@@ -1178,6 +1178,34 @@
       },
       {
         "force_asset_to_network_map": {
+          "from_asset_id": "158456325028528675187087900677",
+          "to_asset_id": "237684487542793012780631851016",
+          "to_network_id": 3
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "237684487542793012780631851016",
+          "to_asset_id": "158456325028528675187087900677",
+          "to_network_id": 2
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "158456325028528675187087900684",
+          "to_asset_id": "237684487542793012780631851018",
+          "to_network_id": 3
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "237684487542793012780631851018",
+          "to_asset_id": "158456325028528675187087900684",
+          "to_network_id": 2
+        }
+      },
+      {
+        "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900674",
           "to_asset_id": "237684487542793012780631851010",
           "to_network_id": 3
