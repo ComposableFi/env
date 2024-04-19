@@ -330,7 +330,7 @@
               "denom": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "Osmosis USDT",
+          "metadata": "Osmosis ??? USDT",
           "network_id": 3
         }
       },
@@ -494,6 +494,27 @@
           "network_id": 2
         }
       },
+      {
+        "force_asset": {
+          "asset_id": "237684487542793012780631851018",
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "ustars",
+                "trace_path": "transfer/channel-75"
+              }
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4"
+            }
+          },
+          "metadata": "Osmosis Stride STARS",
+          "network_id": 3
+        }
+      },      
+       
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900681",
