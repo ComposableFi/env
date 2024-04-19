@@ -631,11 +631,11 @@
         "scip-src": "scip-src"
       },
       "locked": {
-        "lastModified": 1713477961,
-        "narHash": "sha256-/Q5b03cXvleD/HEdpeRf1w+qqTas8ilwyrmWJz2M6LI=",
+        "lastModified": 1713478880,
+        "narHash": "sha256-1j8at4E21N3Nymgn9gEqda/dzjywG78zmCma9r+P6tY=",
         "owner": "ComposableFi",
         "repo": "composable-vm",
-        "rev": "6ce324dd96916bf7a286d8cc50e751d2303e0372",
+        "rev": "eadc32543df3073a6472449c55df3247e5da9f0f",
         "type": "github"
       },
       "original": {
