@@ -1,6 +1,6 @@
 
 
-# How this was setup?
+## How this was setup?
 
 Created AWS S3 storage buckets to store Terraform states.
 
@@ -8,7 +8,7 @@ Added some SSH private key and some stash derived crypto accounts and limited AW
 
 These are used to setup infrastructure via Terraform and give unique identities to running nodes.
 
-# How each node instance deployed?
+## How each node instance deployed?
 
 On top of base Terraform instance template build from NixOs,
 NixOs with configuration for specific node is activated via SSH.
@@ -23,16 +23,13 @@ SSH key of node "owner" is authorized to machine for debugging (and even out if 
 
 All machines are built locally and run via QEMU. Linux only.
 
+## Why it the way it is ?
 
-# Why it the way it is ?
-
-Kudos to this person https://jonascarpay.com/posts/2022-09-19-declarative-deployment.html and my several attempt doing nix+tf all the ways possible.
-
-Here is summary of my attempts https://discourse.nixos.org/t/unknown-values-propagation-in-nix-like-in-hcl/26743
+Kudos to [jonas carpay](https://jonascarpay.com/posts/2022-09-19-declarative-deployment.html) and [my](https://discourse.nixos.org/t/unknown-values-propagation-in-nix-like-in-hcl/26743) several attempt doing nix+tf all the ways possible.
 
 Also this one https://github.com/Effect-TS/infra was set is analog of this repo in general. 
 
-# Security
+## Security
 
 Sure I should also setup security advisory to GitHub hooks and other scanners, to check TF and NIX must not leak secrets, I just did not. 
 
