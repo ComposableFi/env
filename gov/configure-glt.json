@@ -1209,6 +1209,62 @@
         }
       },
       {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1078,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126131",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1078,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126131",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1479,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126132",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1464,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126133",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },                            
+      {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900675",
           "to_asset_id": "237684487542793012780631851011",
