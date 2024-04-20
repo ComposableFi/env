@@ -1092,7 +1092,7 @@
             }
           },
           "exchange_id": "2376844893874674201515870126122",
-          "metadata": "USDT<->???",
+          "metadata": "USDT<->ETH",
           "network_id": 3
         }
       },
@@ -1121,20 +1121,6 @@
           },
           "exchange_id": "2376844893874674201515870126124",
           "metadata": "OSMO<->USDT",
-          "network_id": 3
-        }
-      },
-      {
-        "force_exchange": {
-          "exchange": {
-            "osmosis_pool_manager_module_v1_beta1": {
-              "pool_id": 1144,
-              "token_a": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244",
-              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
-            }
-          },
-          "exchange_id": "2376844893874674201515870126125",
-          "metadata": "DOT<->USDT",
           "network_id": 3
         }
       },
@@ -1263,7 +1249,82 @@
           "metadata": "???",
           "network_id": 3
         }
-      },                            
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1278,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126134",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1274,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126135",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1221,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126136",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1152,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126137",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1151,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126138",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },            
+
+      
+      
+      
+
       {
         "force_asset_to_network_map": {
           "from_asset_id": "158456325028528675187087900675",
