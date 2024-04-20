@@ -3,6 +3,10 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
+    ssh = {
+      source = "loafoe/ssh"
+      version = "2.7.0"
+    }    
   }
   required_version = ">= 1.2.0"
 }
@@ -45,6 +49,21 @@ resource "aws_security_group" "mantis_security_group" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "udp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
 
   egress {
     from_port   = 0

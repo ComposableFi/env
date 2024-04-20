@@ -3,287 +3,280 @@
     "force": [
       {
         "force_network": {
-          "network_id": 5,
-          "metadata": "Cosmos Hub",
           "accounts": {
             "bech": "cosmos"
           },
           "ibc": {
             "channels": {
               "ics20": {
-                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
                 "features": {
                   "pfm": {}
-                }
+                },
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer"
               }
             }
-          }
+          },
+          "metadata": "Cosmos Hub",
+          "network_id": 5
         }
       },
       {
         "force_network": {
-          "network_id": 6,
-          "metadata": "Cosmos Stride",
           "accounts": {
             "bech": "stride"
-          }
+          },
+          "metadata": "Cosmos Stride",
+          "network_id": 6
         }
       },
       {
         "force_network": {
-          "network_id": 4,
-          "metadata": "Cosmos Neutron",
           "accounts": {
             "bech": "neutron"
           },
-          "outpost": {
-            "cosm_wasm": {
-              "contract": "neutron1sugqzfsn4fu7apcah58ez24jrf7ewm6x2c0sz0jwvpkduk4ds88slan52w",
-              "executor_code_id": 581,
-              "admin": "neutron1u2sr0p2j75fuezu92nfxg5wm46gu22ywfacpyz"
-            }
-          },
           "ibc": {
             "channels": {
               "ics20": {
-                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
                 "features": {
                   "pfm": {},
                   "wasm_hooks": {
                     "callback": true
                   }
-                }
+                },
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer"
               }
+            }
+          },
+          "metadata": "Cosmos Neutron",
+          "network_id": 4,
+          "outpost": {
+            "cosm_wasm": {
+              "admin": "neutron1u2sr0p2j75fuezu92nfxg5wm46gu22ywfacpyz",
+              "contract": "neutron1sugqzfsn4fu7apcah58ez24jrf7ewm6x2c0sz0jwvpkduk4ds88slan52w",
+              "executor_code_id": 581
             }
           }
         }
       },
       {
         "force_network": {
-          "network_id": 3,
-          "metadata": "Cosmos Osmosis",
           "accounts": {
             "bech": "osmo"
           },
-          "outpost": {
-            "cosm_wasm": {
-              "contract": "osmo13guwqtt7xdcuhtewc53tpt9jas5xcnk5tvzdxwhn09774m8jpytqr89pry",
-              "executor_code_id": 376,
-              "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh"
-            }
-          },
           "ibc": {
             "channels": {
               "ics20": {
-                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
                 "features": {
                   "pfm": {},
                   "wasm_hooks": {
                     "callback": true
                   }
-                }
+                },
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer"
               }
+            }
+          },
+          "metadata": "Cosmos Osmosis",
+          "network_id": 3,
+          "outpost": {
+            "cosm_wasm": {
+              "admin": "osmo1u2sr0p2j75fuezu92nfxg5wm46gu22yw9ezngh",
+              "contract": "osmo15rquxg3zw8tcgj82hkz2qzy4f69nzzt5yl2qlgqkw6l9drlhfvcsr2yc8y",
+              "executor_code_id": 715
             }
           }
         }
       },
       {
         "force_network": {
-          "network_id": 2,
-          "metadata": "Composable Cosmos",
           "accounts": {
             "bech": "centauri"
-          },
-          "outpost": {
-            "cosm_wasm": {
-              "contract": "centauri1vlh6knyx870k2mc9fspx08ka4fuddsxx6s8tjp83n7xkyckkgm8q25mwr6",
-              "executor_code_id": 41,
-              "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k"
-            }
           },
           "ibc": {
             "channels": {
               "ics20": {
-                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer",
                 "features": {
                   "pfm": {},
                   "wasm_hooks": {
                     "callback": true
                   }
-                }
+                },
+                "sender": "CosmosStargateIbcApplicationsTransferV1MsgTransfer"
               }
             }
+          },
+          "metadata": "Composable Cosmos",
+          "network_id": 2,
+          "outpost": {
+            "cosm_wasm": {
+              "admin": "centauri1u2sr0p2j75fuezu92nfxg5wm46gu22ywfgul6k",
+              "contract": "centauri19dw7w5cm48aeqwszva8kxmnfnft7wp4xt4s73ksyhdya704r3cdq389szq",
+              "executor_code_id": 43
+            }
           }
         }
       },
       {
         "force_network_to_network": {
           "from_network_id": 2,
-          "to_network_id": 3,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-3",
-              "sink": "channel-1279"
+              "sink": "channel-1279",
+              "source": "channel-3"
             }
-          }
+          },
+          "to_network_id": 3
         }
       },
       {
         "force_network_to_network": {
           "from_network_id": 3,
-          "to_network_id": 2,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-1279",
-              "sink": "channel-3"
+              "sink": "channel-3",
+              "source": "channel-1279"
             }
-          }
+          },
+          "to_network_id": 2
         }
       },
       {
         "force_network_to_network": {
+          "from_network_id": 2,
           "metadata": "From Centauri to Neutron",
-          "from_network_id": 2,
-          "to_network_id": 4,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-18",
-              "sink": "channel-17"
+              "sink": "channel-17",
+              "source": "channel-18"
             }
-          }
+          },
+          "to_network_id": 4
         }
       },
       {
         "force_network_to_network": {
+          "from_network_id": 4,
           "metadata": "From Neutron to Centauri",
-          "from_network_id": 4,
-          "to_network_id": 2,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-17",
-              "sink": "channel-18"
+              "sink": "channel-18",
+              "source": "channel-17"
             }
-          }
+          },
+          "to_network_id": 2
         }
       },
       {
         "force_network_to_network": {
+          "from_network_id": 4,
           "metadata": "From Neutron to Osmosis",
-          "from_network_id": 4,
-          "to_network_id": 3,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-10",
-              "sink": "channel-874"
+              "sink": "channel-874",
+              "source": "channel-10"
             }
-          }
+          },
+          "to_network_id": 3
         }
       },
       {
         "force_network_to_network": {
-          "metadata": "From Osmosis to Neutron",
           "from_network_id": 3,
-          "to_network_id": 4,
+          "metadata": "From Osmosis to Neutron",
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-874",
-              "sink": "channel-10"
+              "sink": "channel-10",
+              "source": "channel-874"
             }
-          }
+          },
+          "to_network_id": 4
         }
       },
       {
         "force_network_to_network": {
+          "from_network_id": 5,
           "metadata": "From CosmosHub to Neutron",
-          "from_network_id": 5,
-          "to_network_id": 4,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-569",
-              "sink": "channel-1"
+              "sink": "channel-1",
+              "source": "channel-569"
             }
-          }
+          },
+          "to_network_id": 4
         }
       },
       {
         "force_network_to_network": {
+          "from_network_id": 5,
           "metadata": "From CosmosHub to Centauri",
-          "from_network_id": 5,
-          "to_network_id": 2,
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-617",
-              "sink": "channel-4"
+              "sink": "channel-4",
+              "source": "channel-617"
             }
-          }
+          },
+          "to_network_id": 2
         }
       },
       {
         "force_network_to_network": {
-          "metadata": "From Centauri to CosmosHub",
           "from_network_id": 2,
-          "to_network_id": 5,
+          "metadata": "From Centauri to CosmosHub",
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-4",
-              "sink": "channel-617"
+              "sink": "channel-617",
+              "source": "channel-4"
             }
-          }
+          },
+          "to_network_id": 5
         }
       },
       {
         "force_network_to_network": {
-          "metadata": "From CosmosHub to Osmosis",
           "from_network_id": 5,
-          "to_network_id": 3,
+          "metadata": "From CosmosHub to Osmosis",
           "to_network": {
             "counterparty_timeout": {
               "seconds": 600
             },
             "ics_20": {
-              "source": "channel-0",
-              "sink": "channel-141"
+              "sink": "channel-141",
+              "source": "channel-0"
             }
-          }
+          },
+          "to_network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851009",
-          "network_id": 3,
-          "metadata": "Osmosis Centauri Picasso PICA",
-          "local": {
-            "native": {
-              "denom": "ibc/56D7C03B8F6A07AD322EEE1BEF3AE996E09D1C1E34C27CF37E0D4A0AC5972516"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -291,19 +284,19 @@
                 "trace_path": "transfer/channel-1279"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/56D7C03B8F6A07AD322EEE1BEF3AE996E09D1C1E34C27CF37E0D4A0AC5972516"
+            }
+          },
+          "metadata": "Osmosis Centauri Picasso PICA",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851013",
-          "network_id": 3,
-          "metadata": "Osmosis Neutron NTRN",
-          "local": {
-            "native": {
-              "denom": "ibc/126DA09104B71B164883842B769C0E9EC1486C0887D27A9999E395C2C8FB5682"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -311,19 +304,19 @@
                 "trace_path": "transfer/channel-874"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/126DA09104B71B164883842B769C0E9EC1486C0887D27A9999E395C2C8FB5682"
+            }
+          },
+          "metadata": "Osmosis Neutron NTRN",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851015",
-          "network_id": 3,
-          "metadata": "Osmosis USDT",
-          "local": {
-            "native": {
-              "denom": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -331,19 +324,19 @@
                 "trace_path": "transfer/channel-143"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "metadata": "Osmosis ??? USDT",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851012",
-          "network_id": 3,
-          "metadata": "Osmosis CosmosHub Atom",
-          "local": {
-            "native": {
-              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -351,19 +344,19 @@
                 "trace_path": "transfer/channel-0"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+            }
+          },
+          "metadata": "Osmosis CosmosHub Atom",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851017",
-          "network_id": 3,
-          "metadata": "Osmosis Axelar Ethereum USDC",
-          "local": {
-            "native": {
-              "denom": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -371,19 +364,19 @@
                 "trace_path": "transfer/channel-208"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
+            }
+          },
+          "metadata": "Osmosis Axelar Ethereum USDC",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851014",
-          "network_id": 3,
-          "metadata": "Osmosis Axelar Ethereum WETH",
-          "local": {
-            "native": {
-              "denom": "ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -391,19 +384,19 @@
                 "trace_path": "transfer/channel-208"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5"
+            }
+          },
+          "metadata": "Osmosis Axelar Ethereum WETH",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851016",
-          "network_id": 3,
-          "metadata": "Osmosis ??? USDC",
-          "local": {
-            "native": {
-              "denom": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -411,19 +404,19 @@
                 "trace_path": "transfer/channel-750"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
+            }
+          },
+          "metadata": "Osmosis ??? USDC",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851011",
-          "metadata": "Osmosis Centauri Picasso Composable Polkadot DOT",
-          "network_id": 3,
-          "local": {
-            "native": {
-              "denom": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -431,19 +424,19 @@
                 "trace_path": "transfer/channel-1279/transfer/channel-2/transfer/channel-15"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244"
+            }
+          },
+          "metadata": "Osmosis Centauri Picasso Composable Polkadot DOT",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900677",
-          "metadata": "Centauri Neutron NTRN",
-          "network_id": 2,
-          "local": {
-            "native": {
-              "denom": "ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -451,19 +444,19 @@
                 "trace_path": "transfer/channel-18"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/43C92566AEA8C100CF924DB324BD8F699B6374CA5B93BF6BCFEC4777B62D50D1"
+            }
+          },
+          "metadata": "Centauri Neutron NTRN",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900678",
-          "metadata": "Centauri Osmosis CosmosHub ATOM",
-          "network_id": 2,
-          "local": {
-            "native": {
-              "denom": "ibc/???"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -471,39 +464,19 @@
                 "trace_path": "transfer/channel-3/transfer/channel-0"
               }
             }
-          }
-        }
-      },
-      {
-        "force_asset": {
-          "asset_id": "158456325028528675187087900679",
-          "metadata": "Centauri Osmosis ??? STARS",
-          "network_id": 2,
+          },
           "local": {
             "native": {
-              "denom": "ibc/???"
+              "denom": "ibc/F34DC2408B2EB193D2A82388AC5F9AC86282B14BBF623A8581BBE075654547CD"
             }
           },
-          "bridged": {
-            "location_on_network": {
-              "ibc_ics20": {
-                "base_denom": "ustars",
-                "trace_path": "transfer/channel-3/transfer/channel-75"
-              }
-            }
-          }
+          "metadata": "Centauri Osmosis CosmosHub ATOM",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900680",
-          "metadata": "Centauri Osmosis ??? WETH",
-          "network_id": 2,
-          "local": {
-            "native": {
-              "denom": "ibc/???"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -511,19 +484,39 @@
                 "trace_path": "transfer/channel-3/transfer/channel-208"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/F472078E60F4AA887DA65A6009E501882594AAA5721C3C13F54724E6B29F1718"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? WETH",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "237684487542793012780631851018",
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "ustars",
+                "trace_path": "transfer/channel-75"
+              }
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4"
+            }
+          },
+          "metadata": "Osmosis Stride STARS",
+          "network_id": 3
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900681",
-          "metadata": "Centauri Osmosis ??? USDT",
-          "network_id": 2,
-          "local": {
-            "native": {
-              "denom": "ibc/???"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -531,19 +524,19 @@
                 "trace_path": "transfer/channel-3/transfer/channel-143"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/B063BCBCD45084893C9889EBE472D666F7E6F56300897DCECDFD7EB88C3E8609"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? USDT",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900682",
-          "metadata": "Centauri Osmosis ??? USDC",
-          "network_id": 2,
-          "local": {
-            "native": {
-              "denom": "ibc/???"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -551,19 +544,19 @@
                 "trace_path": "transfer/channel-3/transfer/channel-208"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/???"
+            }
+          },
+          "metadata": "Centauri Osmosis Axelar Ethereum USDC",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801345",
-          "network_id": 4,
-          "metadata": "Neutron CosmosHub Atom",
-          "local": {
-            "native": {
-              "denom": "uatom"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -571,31 +564,31 @@
                 "trace_path": "transfer/channel-1"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "uatom"
+            }
+          },
+          "metadata": "Neutron CosmosHub Atom",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801350",
-          "network_id": 4,
-          "metadata": "Neutron NTRN",
           "local": {
             "native": {
               "denom": "untrn"
             }
-          }
+          },
+          "metadata": "Neutron NTRN",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801346",
-          "network_id": 4,
-          "metadata": "Neutron Axelar USDC",
-          "local": {
-            "native": {
-              "denom": "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -603,19 +596,19 @@
                 "trace_path": "transfer/channel-2"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
+            }
+          },
+          "metadata": "Neutron Axelar USDC",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801347",
-          "network_id": 4,
-          "metadata": "Neutron Osmosis OSMO",
-          "local": {
-            "native": {
-              "denom": "ibc/376222D6D9DAE23092E29740E56B758580935A6D77C24C2ABD57A6A78A1F3955"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -623,19 +616,19 @@
                 "trace_path": "transfer/channel-10"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/376222D6D9DAE23092E29740E56B758580935A6D77C24C2ABD57A6A78A1F3955"
+            }
+          },
+          "metadata": "Neutron Osmosis OSMO",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801348",
-          "network_id": 4,
-          "metadata": "Neutron Centauri Picasso PICA",
-          "local": {
-            "native": {
-              "denom": "ibc/1CF1239A3068964DAF55F7300D7BE016E4E184F58EEB59096B138F6D72628BAA"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -643,19 +636,19 @@
                 "trace_path": "transfer/channel-17"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/1CF1239A3068964DAF55F7300D7BE016E4E184F58EEB59096B138F6D72628BAA"
+            }
+          },
+          "metadata": "Neutron Centauri Picasso PICA",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "396140812571321687967719751681",
-          "network_id": 5,
-          "metadata": "CosmosHub Osmosis OSMO",
-          "local": {
-            "native": {
-              "denom": "ibc/14F9BC3E44B8A9C1BE1FB08980FAB87034C9905EF17CF2F5008FC085218811CC"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -663,19 +656,19 @@
                 "trace_path": "transfer/channel-141"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/14F9BC3E44B8A9C1BE1FB08980FAB87034C9905EF17CF2F5008FC085218811CC"
+            }
+          },
+          "metadata": "CosmosHub Osmosis OSMO",
+          "network_id": 5
         }
       },
       {
         "force_asset": {
           "asset_id": "396140812571321687967719751682",
-          "network_id": 5,
-          "metadata": "CosmosHub Neutron NTRN",
-          "local": {
-            "native": {
-              "denom": "ibc/0025F8A87464A471E66B234C4F93AEC5B4DA3D42D7986451A059273426290DD5"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -683,19 +676,19 @@
                 "trace_path": "transfer/channel-569"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/0025F8A87464A471E66B234C4F93AEC5B4DA3D42D7986451A059273426290DD5"
+            }
+          },
+          "metadata": "CosmosHub Neutron NTRN",
+          "network_id": 5
         }
       },
       {
         "force_asset": {
           "asset_id": "396140812571321687967719751683",
-          "network_id": 5,
-          "metadata": "CosmosHub Centauri Picasso Pica",
-          "local": {
-            "native": {
-              "denom": "ibc/F4A4D751F3C3E0545E44EBE27B2FE53AEC1603595ABE06CDF2FF86903D590A63"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -703,31 +696,31 @@
                 "trace_path": "transfer/channel-617"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/F4A4D751F3C3E0545E44EBE27B2FE53AEC1603595ABE06CDF2FF86903D590A63"
+            }
+          },
+          "metadata": "CosmosHub Centauri Picasso Pica",
+          "network_id": 5
         }
       },
       {
         "force_asset": {
           "asset_id": "396140812571321687967719751684",
-          "network_id": 5,
-          "metadata": "CosmosHub ATOM",
           "local": {
             "native": {
               "denom": "uatom"
             }
-          }
+          },
+          "metadata": "CosmosHub ATOM",
+          "network_id": 5
         }
       },
       {
         "force_asset": {
           "asset_id": "316912650057057350374175801349",
-          "network_id": 4,
-          "metadata": "WETH from Axelar",
-          "local": {
-            "native": {
-              "denom": "ibc/A585C2D15DCD3B010849B453A2CFCB5E213208A5AB665691792684C26274304D"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -735,19 +728,19 @@
                 "trace_path": "transfer/channel-2"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/A585C2D15DCD3B010849B453A2CFCB5E213208A5AB665691792684C26274304D"
+            }
+          },
+          "metadata": "WETH from Axelar",
+          "network_id": 4
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900673",
-          "network_id": 2,
-          "metadata": "Centauri Picasso PICA",
-          "local": {
-            "native": {
-              "denom": "ppica"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -755,19 +748,19 @@
                 "trace_path": "transfer/channel-1"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ppica"
+            }
+          },
+          "metadata": "Centauri Picasso PICA",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900674",
-          "network_id": 2,
-          "metadata": "Centauri Osmosis OSMO",
-          "local": {
-            "native": {
-              "denom": "ibc/47BD209179859CDE4A2806763D7189B6E6FE13A17880FE2B42DE1E6C1E329E23"
-            }
-          },
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -775,18 +768,78 @@
                 "trace_path": "transfer/channel-3"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/47BD209179859CDE4A2806763D7189B6E6FE13A17880FE2B42DE1E6C1E329E23"
+            }
+          },
+          "metadata": "Centauri Osmosis OSMO",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "158456325028528675187087900675",
-          "network_id": 2,
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "79228162514264337593543950342",
+                "trace_path": "transfer/channel-2/transfer/channel-15"
+              }
+            }
+          },
           "local": {
             "native": {
               "denom": "ibc/6E41D54C24A4ACDDC1F2A8BF110867421C15E03CFD4A1B6B698570AC09A9EBF0"
             }
           },
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900676",
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "base_denom": "uatom",
+                "trace_path": "transfer/channel-4"
+              }
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0"
+            }
+          },
+          "metadata": "Centauri CosmosHub ATOM",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900685",
+          "bridged": {
+            "location_on_network": {
+              "ibc_ics20": {
+                "trace_path": "transfer/channel-3/transfer/channel-750",
+                "base_denom": "uusdc"
+              }
+            }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/247DEF7C0E022DC3FAF5EB13A38C616252B5B85651803E03710CCBD581673C87"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? USDC",
+          "network_id": 2
+        }
+      },
+      {
+        "force_asset": {
+          "asset_id": "158456325028528675187087900683",
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
@@ -794,39 +847,46 @@
                 "base_denom": "79228162514264337593543950342"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/3CC19CEC7E5A3E90E78A5A9ECC5A0E2F8F826A375CF1E096F4515CF09DA3E366"
+            }
+          },
+          "metadata": "Centauri Picasso ???",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
-          "asset_id": "158456325028528675187087900676",
-          "network_id": 2,
-          "metadata": "Centauri CosmosHub ATOM",
-          "local": {
-            "native": {
-              "denom": "ibc/EF48E6B1A1A19F47ECAEA62F5670C37C0580E86A9E88498B7E393EB6F49F33C0"
-            }
-          },
+          "asset_id": "158456325028528675187087900684",
           "bridged": {
             "location_on_network": {
               "ibc_ics20": {
-                "trace_path": "transfer/channel-4",
-                "base_denom": "uatom"
+                "trace_path": "transfer/channel-3/transfer/channel-75",
+                "base_denom": "ustars"
               }
             }
-          }
+          },
+          "local": {
+            "native": {
+              "denom": "ibc/4472060867B1527ECE6456D82B463A536EAF4ABC57E0099FF5302F4C93D8C65E"
+            }
+          },
+          "metadata": "Centauri Osmosis ??? STARS",
+          "network_id": 2
         }
       },
       {
         "force_asset": {
           "asset_id": "237684487542793012780631851010",
-          "network_id": 3,
-          "metadata": "Osmosis OSMO",
           "local": {
             "native": {
               "denom": "uosmo"
             }
-          }
+          },
+          "metadata": "Osmosis OSMO",
+          "network_id": 3
         }
       },
       {
@@ -877,8 +937,8 @@
               "token_b": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
             }
           },
-          "metadata": "OSMO<->ATOM",
           "exchange_id": "237684489387467420151587012611",
+          "metadata": "OSMO<->ATOM",
           "network_id": 3
         }
       },
@@ -891,8 +951,8 @@
               "token_b": "ibc/126DA09104B71B164883842B769C0E9EC1486C0887D27A9999E395C2C8FB5682"
             }
           },
-          "metadata": "OSMO<->NTRN",
           "exchange_id": "2376844893874674201515870126112",
+          "metadata": "OSMO<->NTRN",
           "network_id": 3
         }
       },
@@ -905,8 +965,8 @@
               "token_b": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
             }
           },
-          "metadata": "OSMO<->USDC",
           "exchange_id": "2376844893874674201515870126113",
+          "metadata": "OSMO<->USDC",
           "network_id": 3
         }
       },
@@ -919,8 +979,8 @@
               "token_b": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244"
             }
           },
-          "metadata": "OSMO<->DOT",
           "exchange_id": "2376844893874674201515870126114",
+          "metadata": "OSMO<->DOT",
           "network_id": 3
         }
       },
@@ -933,8 +993,8 @@
               "token_b": "ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5"
             }
           },
-          "metadata": "OSMO<->ETH",
           "exchange_id": "2376844893874674201515870126115",
+          "metadata": "OSMO<->ETH",
           "network_id": 3
         }
       },
@@ -947,8 +1007,8 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "OSMO<->USDT",
           "exchange_id": "2376844893874674201515870126116",
+          "metadata": "OSMO<->USDT",
           "network_id": 3
         }
       },
@@ -961,8 +1021,8 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "DOT<->USDT",
           "exchange_id": "2376844893874674201515870126117",
+          "metadata": "DOT<->USDT",
           "network_id": 3
         }
       },
@@ -975,8 +1035,8 @@
               "token_b": "ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5"
             }
           },
-          "metadata": "OSMO<->Axelar Ethereum WETH",
           "exchange_id": "2376844893874674201515870126118",
+          "metadata": "OSMO<->Axelar Ethereum WETH",
           "network_id": 3
         }
       },
@@ -989,8 +1049,8 @@
               "token_b": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
             }
           },
-          "metadata": "ATOM<->USDC",
           "exchange_id": "2376844893874674201515870126119",
+          "metadata": "ATOM<->USDC",
           "network_id": 3
         }
       },
@@ -1003,8 +1063,8 @@
               "token_b": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
             }
           },
-          "metadata": "OSMO<->ATOM",
           "exchange_id": "2376844893874674201515870126120",
+          "metadata": "OSMO<->ATOM",
           "network_id": 3
         }
       },
@@ -1017,8 +1077,8 @@
               "token_b": "uosmo"
             }
           },
-          "metadata": "ETH<->OSMO",
           "exchange_id": "2376844893874674201515870126121",
+          "metadata": "ETH<->OSMO",
           "network_id": 3
         }
       },
@@ -1031,8 +1091,8 @@
               "token_b": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
             }
           },
-          "metadata": "USDT<->???",
           "exchange_id": "2376844893874674201515870126122",
+          "metadata": "USDT<->ETH",
           "network_id": 3
         }
       },
@@ -1045,8 +1105,8 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "ATOM<->USDT",
           "exchange_id": "2376844893874674201515870126123",
+          "metadata": "ATOM<->USDT",
           "network_id": 3
         }
       },
@@ -1059,8 +1119,8 @@
               "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
             }
           },
-          "metadata": "OSMO<->USDT",
           "exchange_id": "2376844893874674201515870126124",
+          "metadata": "OSMO<->USDT",
           "network_id": 3
         }
       },
@@ -1068,136 +1128,351 @@
         "force_exchange": {
           "exchange": {
             "osmosis_pool_manager_module_v1_beta1": {
-              "pool_id": 1144,
-              "token_a": "ibc/6B2B19D874851F631FF0AF82C38A20D4B82F438C7A22F41EDA33568345397244",
-              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+              "pool_id": 678,
+              "token_a": "uosmo",
+              "token_b": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
             }
           },
-          "metadata": "DOT<->USDT",
-          "exchange_id": "2376844893874674201515870126125",
+          "exchange_id": "2376844893874674201515870126126",
+          "metadata": "OSMO<->USDC",
           "network_id": 3
         }
       },
       {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1212,
+              "token_a": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858",
+              "token_b": "ibc/498A0751C798A0D9A389AA3691123DADA57DAA4FE165D5C75894505B876BA6E4"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126127",
+          "metadata": "USDC<->USDC",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1081,
+              "token_a": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858",
+              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126128",
+          "metadata": "ETH<->USDT",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1076,
+              "token_a": "uosmo",
+              "token_b": "ibc/4ABBEF4C8926DDDB320AE5188CFD63267ABBCEFC0583E4AE05D6E5AA2401DDAB"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126130",
+          "metadata": "OSMO<->USDT",
+          "network_id": 3
+        }
+      },      
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1,
+              "token_a": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+              "token_b": "uosmo"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126129",
+          "metadata": "ATOM<->OSMO",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1078,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126131",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1078,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126131",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1479,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126132",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1464,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126133",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1278,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126134",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1274,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126135",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1221,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126136",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1152,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126137",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },  
+      {
+        "force_exchange": {
+          "exchange": {
+            "osmosis_pool_manager_module_v1_beta1": {
+              "pool_id": 1151,
+              "token_a": "a",
+              "token_b": "b"
+            }
+          },
+          "exchange_id": "2376844893874674201515870126138",
+          "metadata": "???",
+          "network_id": 3
+        }
+      },            
+
+      
+      
+      
+
+      {
         "force_asset_to_network_map": {
-          "this_asset": "158456325028528675187087900675",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851011"
+          "from_asset_id": "158456325028528675187087900675",
+          "to_asset_id": "237684487542793012780631851011",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "237684487542793012780631851011",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900675"
+          "from_asset_id": "237684487542793012780631851011",
+          "to_asset_id": "158456325028528675187087900675",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "158456325028528675187087900673",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851009"
+          "from_asset_id": "158456325028528675187087900673",
+          "to_asset_id": "237684487542793012780631851009",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "237684487542793012780631851009",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900673"
+          "from_asset_id": "237684487542793012780631851009",
+          "to_asset_id": "158456325028528675187087900673",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "158456325028528675187087900674",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851010"
+          "from_asset_id": "158456325028528675187087900685",
+          "to_asset_id": "237684487542793012780631851016",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "237684487542793012780631851010",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900674"
+          "from_asset_id": "237684487542793012780631851016",
+          "to_asset_id": "158456325028528675187087900685",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
+          "from_asset_id": "158456325028528675187087900684",
+          "to_asset_id": "237684487542793012780631851018",
+          "to_network_id": 3
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "237684487542793012780631851018",
+          "to_asset_id": "158456325028528675187087900684",
+          "to_network_id": 2
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "158456325028528675187087900674",
+          "to_asset_id": "237684487542793012780631851010",
+          "to_network_id": 3
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "237684487542793012780631851010",
+          "to_asset_id": "158456325028528675187087900674",
+          "to_network_id": 2
+        }
+      },
+      {
+        "force_asset_to_network_map": {
+          "from_asset_id": "158456325028528675187087900677",
           "metadata": "Centauri NTRN -> Neutron",
-          "this_asset": "158456325028528675187087900677",
-          "other_network": 4,
-          "other_asset": "316912650057057350374175801350"
+          "to_asset_id": "316912650057057350374175801350",
+          "to_network_id": 4
         }
       },
       {
         "force_asset_to_network_map": {
+          "from_asset_id": "316912650057057350374175801350",
           "metadata": "Neutron NTRN -> Centauri",
-          "this_asset": "316912650057057350374175801350",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900677"
+          "to_asset_id": "158456325028528675187087900677",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
+          "from_asset_id": "316912650057057350374175801347",
           "metadata": "Neutron OSMO -> Osmosis",
-          "this_asset": "316912650057057350374175801347",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851010"
+          "to_asset_id": "237684487542793012780631851010",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "158456325028528675187087900680",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851014"
+          "from_asset_id": "158456325028528675187087900680",
+          "to_asset_id": "237684487542793012780631851014",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "other_asset": "158456325028528675187087900680",
-          "other_network": 3,
-          "this_asset": "237684487542793012780631851014"
+          "from_asset_id": "237684487542793012780631851014",
+          "to_asset_id": "158456325028528675187087900680",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "237684487542793012780631851013",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900682"
+          "from_asset_id": "237684487542793012780631851013",
+          "to_asset_id": "158456325028528675187087900682",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
-          "other_asset": "237684487542793012780631851013",
-          "other_network": 3,
-          "this_asset": "158456325028528675187087900682"
+          "from_asset_id": "158456325028528675187087900682",
+          "to_asset_id": "237684487542793012780631851013",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "237684487542793012780631851015",
-          "other_network": 2,
-          "other_asset": "158456325028528675187087900681"
+          "from_asset_id": "237684487542793012780631851015",
+          "to_asset_id": "158456325028528675187087900681",
+          "to_network_id": 2
         }
       },
       {
         "force_asset_to_network_map": {
-          "other_asset": "237684487542793012780631851015",
-          "other_network": 3,
-          "this_asset": "158456325028528675187087900681"
+          "from_asset_id": "158456325028528675187087900681",
+          "to_asset_id": "237684487542793012780631851015",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "this_asset": "158456325028528675187087900678",
-          "other_network": 3,
-          "other_asset": "237684487542793012780631851012"
+          "from_asset_id": "158456325028528675187087900678",
+          "to_asset_id": "237684487542793012780631851012",
+          "to_network_id": 3
         }
       },
       {
         "force_asset_to_network_map": {
-          "other_asset": "158456325028528675187087900678",
-          "other_network": 2,
-          "this_asset": "237684487542793012780631851012"
+          "from_asset_id": "237684487542793012780631851012",
+          "to_asset_id": "158456325028528675187087900678",
+          "to_network_id": 2
         }
       }
     ]

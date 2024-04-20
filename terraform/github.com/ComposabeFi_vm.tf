@@ -2,7 +2,7 @@
 
 
 resource "github_repository" "composable-vm" {
-  description = "Interchain Atomicity, Blockbuilding and Routing via Composable VM"
+  description = "Interchain Accounts, Atomicity, Blockbuilding and Routing via Composable VM"
   name        = "composable-vm"
   has_issues             = true
   has_discussions        = false
@@ -56,7 +56,14 @@ resource "github_repository_collaborators" "composable-vm" {
     permission = "push"
     username   = data.github_user.solver_2.username
   }
+
+  user {
+    permission = "push"
+    username   = "banegil"
+  }
 }
+
+
 
 # resource "github_branch_protection_v3" "composable-vm" {
 
