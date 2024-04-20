@@ -19,3 +19,5 @@ You must configure it via command line or enviroment variables with your own pri
 After you run these two, you effectively is **Solver**.
 
 All scripts were tested on Linux and it is recommended system for being solver. 
+
+Deeper technicalk dive into solver infrastucture is available [here](https://www.youtube.com/watch?v=nimg8qdSy70).
