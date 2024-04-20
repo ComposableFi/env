@@ -5,7 +5,7 @@ Here are the provided instructions on how to run an example solver that calls th
 The example **Solver** consists of two services:
 
 1. First service is the **MANTIS Blackbox**.
-   - **Blackbox** finds optimal cross-chain routes using CVM GLT and external Oracle data.
+   - **Blackbox** finds optimal cross-chain routes using [CVM GLT](https://www.youtube.com/@dzmitry-lahoda) and external Oracle data.
    - It can be run using [this script](https://github.com/ComposableFi/env/blob/4cde0bb29ef99af73e84d0208ade192b48797788/flake.nix#L72). **Blackbox** is written in Python and can be configured via [environment variables](https://github.com/ComposableFi/composable-vm/blob/main/mantis/blackbox/settings.py), including HTTP APIs, RPC endpoints, and contract addresses.
    - **Blackbox** does not issue transactions on-chain; however, it relies on calling third-party services, which may incur costs.
 
